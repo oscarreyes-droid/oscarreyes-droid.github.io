@@ -1,11 +1,11 @@
 :root {
   color-scheme:dark;
-  --bg:#101412;
-  --surface:#181e1a;
-  --ink:#eef1e8;
-  --muted:#a9b5aa;
-  --line:#344037;
-  --accent:#d7ef96;
+  --bg:#07090d;
+  --surface:#10151d;
+  --ink:#edf6ff;
+  --muted:#a6b8cb;
+  --line:#293e52;
+  --accent:#8ad9ff;
   --mono:'SFMono-Regular',Consolas,'Liberation Mono',monospace;
   --sans:Inter,'Helvetica Neue',Arial,sans-serif
 }
@@ -141,7 +141,7 @@ nav {
   transition:background .2s
 }
 .button:hover {
-  background:#283323
+  background:#172a3b
 }
 .primary {
   background:var(--accent);
@@ -150,7 +150,7 @@ nav {
   font-weight:600
 }
 .primary:hover {
-  background:#e8ffb0;
+  background:#c3eeff;
   color:var(--bg)
 }
 .text-link {
@@ -206,7 +206,7 @@ nav {
 .diagram-link { cursor:pointer; text-decoration:none; outline:none; }
 .diagram-link rect {
   fill:var(--bg);
-  stroke:#65755a;
+  stroke:#426580;
   stroke-width:1.3;
   transition:fill .2s, stroke .2s;
 }
@@ -215,7 +215,7 @@ nav {
 .node-detail { fill:var(--muted); font-size:9px; }
 .node-action { fill:var(--accent); font-size:8px; letter-spacing:1px; }
 .diagram-link:hover rect, .diagram-link:focus-visible rect {
-  fill:#2b3825;
+  fill:#142d42;
   stroke:var(--accent);
   stroke-width:2.5;
 }
@@ -223,7 +223,7 @@ nav {
 .project { scroll-margin-top:30px; }
 .project:target {
   border-color:var(--accent);
-  box-shadow:0 0 0 2px #d7ef9625;
+  box-shadow:0 0 0 2px #8ad9ff25;
 }
 .project:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
 .highlights {
@@ -299,7 +299,7 @@ h3 {
   transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease
 }
 .project:hover, .project:focus-within {
-  border-color:#78876a;
+  border-color:#8ad9ff;
   transform:translateY(-7px);
   box-shadow:0 16px 34px #0005;
 }
@@ -328,8 +328,8 @@ h3 {
   margin:0 0 16px
 }
 .project p.result {
-  color:#d2dbcd;
-  border-left:2px solid #6c7c55;
+  color:#cfdfed;
+  border-left:2px solid #5c9bc0;
   padding-left:13px
 }
 .tags {
@@ -341,7 +341,7 @@ h3 {
   border:1px solid var(--line);
   border-radius:4px;
   padding:3px 8px;
-  color:#c0cbb9;
+  color:#b6d1e6;
   font:10px/1.7 var(--mono)
 }
 .project .tags {
@@ -379,7 +379,7 @@ h3 {
   width:64px;
   height:64px;
   object-fit:contain;
-  background:#080a08;
+  background:#05070b;
   border:1px solid var(--line);
   border-radius:10px;
 }
@@ -611,3 +611,60 @@ footer a {
 @media (prefers-reduced-motion: reduce) {
   .project:hover, .project:focus-within { transform:none; }
 }
+
+/* A wider board lets the project connections read from left to right. */
+.hero { grid-template-columns:1fr; gap:40px; padding-top:70px; }
+.hero-copy { display:grid; grid-template-columns:1.2fr 1fr; column-gap:60px; }
+.hero-copy > .eyebrow { grid-column:1 / -1; }
+.hero-copy h1 { grid-column:1; grid-row:2; font-size:clamp(44px,5vw,64px); }
+.hero h1 strong { font-family:Georgia,serif; font-weight:700; color:var(--accent); }
+.hero-copy .intro { grid-column:2; grid-row:2; margin-top:0; align-self:center; }
+.hero-copy .hero-actions { grid-column:2; grid-row:3; margin-top:0; }
+.hero-copy .hero-note { grid-column:1; grid-row:3; align-self:center; margin:0; }
+.system { transform:none; min-width:0; max-width:100%; }
+.circuit-viewport { overflow-x:auto; scrollbar-width:thin; scrollbar-color:var(--line) var(--bg); }
+.circuit-viewport:focus-visible { outline:2px solid var(--accent); outline-offset:-3px; }
+.firmware-diagram { min-width:760px; }
+.node-label { font-size:17px; }
+.node-detail { font-size:12px; }
+.node-action { font-size:10px; }
+.board-labels { fill:var(--muted); font:10px var(--mono); letter-spacing:1px; }
+.secondary-trace { opacity:.35; }
+.circuit-scroll-hint { display:none; }
+@media(max-width:950px) {
+  .hero-copy { column-gap:32px; }
+  .hero-copy h1 { font-size:48px; letter-spacing:-2px; }
+}
+@media(max-width:800px) {
+  .circuit-scroll-hint { display:inline; }
+}
+@media(max-width:700px) {
+  .hero { padding-top:50px; }
+  .hero-copy { display:block; }
+  .hero-copy h1 { font-size:clamp(42px,9vw,60px); }
+  .hero-copy .hero-actions { margin-top:28px; }
+  .hero-copy .hero-note { margin-top:28px; }
+  .system { max-width:none; min-width:0; }
+  .system-footer { gap:12px; font-size:8px; letter-spacing:0; }
+}
+
+/* Cool metal and reactor-blue highlights, kept subtle around readable content. */
+body { background:radial-gradient(ellipse at 85% 0%, #54bfff0c, transparent 38%), var(--bg); }
+.monogram, .status-dot { filter:drop-shadow(0 0 6px #8ad9ff55); }
+.hero h1 strong { text-shadow:0 0 30px #8ad9ff30; }
+.system {
+  position:relative;
+  border-color:#426580;
+  background:linear-gradient(135deg, #151f2b, #0a1018 65%);
+  box-shadow:0 0 40px #54bfff0a, inset 0 1px 0 #b8e9ff20;
+}
+.system-bar { color:var(--accent); background:linear-gradient(90deg, #8ad9ff0c, transparent); }
+.circuit-traces { filter:drop-shadow(0 0 3px #8ad9ff45); }
+.diagram-link rect { fill:#0b121b; }
+.diagram-link:hover rect, .diagram-link:focus-visible rect {
+  fill:#142d42;
+  filter:drop-shadow(0 0 7px #8ad9ff55);
+}
+.project { background:linear-gradient(145deg, #131c27, #0c1119); }
+.project:hover, .project:focus-within { box-shadow:0 16px 34px #0008, 0 0 20px #8ad9ff12; }
+.primary { box-shadow:0 0 20px #8ad9ff18; }

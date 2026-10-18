@@ -3,32 +3,37 @@ window.THEMES.clean = {
   label: "Clean", css: "site/themes/clean.css",
   render: function (d, h) {
     var e = h.esc;
-    var headline = e(d.headline).replace(/(\S+)$/, "<span>$1</span>");
+    var headline = e(d.headline).replace(/\bFIRMWARE\b/, "<strong><em>FIRMWARE</em></strong>");
     function tags(a) { return '<div class="tags">' + h.list(a).map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</div>'; }
     // Inline SVG keeps project links in the page's keyboard and navigation flow.
     function circuitNode(id, x, y, label, detail) {
       var project = h.list(d.projects).find(function (p) { return p.id === id; });
       if (!project) return "";
       return '<a class="diagram-link" href="#project-' + e(id) + '" aria-label="Explore ' + e(project.name) + '">' +
-        '<rect x="' + x + '" y="' + y + '" width="180" height="76" rx="6"/>' +
-        '<text class="node-label" x="' + (x + 90) + '" y="' + (y + 29) + '">' + e(label) + '</text>' +
-        '<text class="node-detail" x="' + (x + 90) + '" y="' + (y + 49) + '">' + e(detail) + '</text>' +
-        '<text class="node-action" x="' + (x + 90) + '" y="' + (y + 65) + '">EXPLORE ↓</text></a>';
+        '<rect x="' + x + '" y="' + y + '" width="260" height="95" rx="6"/>' +
+        '<text class="node-label" x="' + (x + 130) + '" y="' + (y + 34) + '">' + e(label) + '</text>' +
+        '<text class="node-detail" x="' + (x + 130) + '" y="' + (y + 56) + '">' + e(detail) + '</text>' +
+        '<text class="node-action" x="' + (x + 130) + '" y="' + (y + 78) + '">EXPLORE ↓</text></a>';
     }
-    var circuit = '<svg class="firmware-diagram" viewBox="0 0 460 490" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="circuit-title circuit-desc">' +
+    var circuit = '<svg class="firmware-diagram" viewBox="0 0 1120 380" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="circuit-title circuit-desc">' +
       '<title id="circuit-title">Explore my projects through the circuit</title>' +
-      '<desc id="circuit-desc">Six connected components link to the corresponding project below. Use Tab and Enter, or select a component.</desc>' +
-      '<defs><pattern id="project-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="#344037"/></pattern></defs>' +
-      '<rect width="460" height="490" fill="url(#project-grid)"/>' +
-      '<g class="circuit-traces"><path d="M120 114v22h110v28 M340 114v22H230 M230 240v23H120v25 M230 263h110v25 M120 364v18h110v16 M340 364v18H230"/>' +
-      '<circle cx="230" cy="136" r="3"/><circle cx="230" cy="263" r="3"/><circle cx="230" cy="382" r="3"/>' +
-      '<path class="chip-pins" d="M156 158v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9m16 9v-9 M156 246v9m16-9v9m16-9v9m16-9v9m16-9v9m16-9v9m16-9v9m16-9v9m16-9v9m16-9v9"/></g>' +
-      circuitNode('lc3b-processor', 30, 38, 'LC-3b PROCESSOR', 'ASSEMBLER / PIPELINE') +
-      circuitNode('fpga-timer', 250, 38, 'FPGA TIMER', 'VERILOG / CONTROL') +
-      circuitNode('rtos-kernel', 140, 164, 'RTOS KERNEL', 'C / ARM / SCHEDULING') +
-      circuitNode('fir-filter-bank', 30, 288, 'FIR FILTER BANK', 'MATLAB / MULTIRATE DSP') +
-      circuitNode('space-invaders', 250, 288, 'SPACE INVADERS', 'MCU / AUDIO / DISPLAY') +
-      circuitNode('audio-image-synthesis', 140, 398, 'AUDIO ↔ IMAGE', 'FFT / SIGNAL SYNTHESIS') + '</svg>';
+      '<desc id="circuit-desc">A circuit board with six project components connected from left to right. Select a component to reach its project. On smaller screens, scroll sideways to explore the board.</desc>' +
+      '<defs><pattern id="project-grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.8" fill="var(--line)"/></pattern></defs>' +
+      '<rect width="1120" height="380" fill="url(#project-grid)"/>' +
+      '<g class="circuit-traces" aria-hidden="true">' +
+      '<path d="M320 102h110 M690 102h110 M320 272h110 M690 272h110 M190 150v75 M930 150v75 M560 150v75"/>' +
+      '<path class="secondary-trace" d="M320 84h34l18-18h40l18 18 M690 84h34l18-18h40l18 18 M320 290h34l18 18h40l18-18 M690 290h34l18 18h40l18-18 M170 150v24l-18 18v16l18 17 M580 150v24l18 18v16l-18 17 M950 150v24l18 18v16l-18 17 M60 78H30V28h1060v50h-30 M60 294H30v58h1060v-58h-30"/>' +
+      '<path d="M320 122h16l8-8 8 16 8-16 8 16 8-8h54 M690 252h16l8-8 8 16 8-16 8 16 8-8h54"/>' +
+      '<path class="chip-pins" d="M450 49V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38m20 11V38 M450 156v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11m20-11v11"/>' +
+      '<circle cx="375" cy="102" r="3"/><circle cx="745" cy="102" r="3"/><circle cx="375" cy="272" r="3"/><circle cx="745" cy="272" r="3"/><circle cx="190" cy="187" r="3"/><circle cx="560" cy="187" r="3"/><circle cx="930" cy="187" r="3"/>' +
+      '<path d="M365 96l8 6-8 6 M735 96l8 6-8 6 M365 266l8 6-8 6 M735 266l8 6-8 6"/>' +
+      '</g><g class="board-labels" aria-hidden="true"><text x="62" y="22">U1 / COMPUTE</text><text x="432" y="22">U2 / FIRMWARE</text><text x="802" y="22">U3 / CONTROL</text><text x="62" y="211">U4 / SIGNALS</text><text x="432" y="211">U5 / TRANSFORM</text><text x="802" y="211">U6 / INTERFACE</text><text x="330" y="183">DATA →</text><text x="700" y="183">CLOCK →</text></g>' +
+      circuitNode('lc3b-processor', 60, 55, 'LC-3b PROCESSOR', 'ASSEMBLER / PIPELINE') +
+      circuitNode('rtos-kernel', 430, 55, 'RTOS KERNEL', 'C / ARM / SCHEDULING') +
+      circuitNode('fpga-timer', 800, 55, 'FPGA TIMER', 'VERILOG / CONTROL') +
+      circuitNode('fir-filter-bank', 60, 225, 'FIR FILTER BANK', 'MATLAB / MULTIRATE DSP') +
+      circuitNode('audio-image-synthesis', 430, 225, 'AUDIO ↔ IMAGE', 'FFT / SIGNAL SYNTHESIS') +
+      circuitNode('space-invaders', 800, 225, 'SPACE INVADERS', 'MCU / AUDIO / DISPLAY') + '</svg>';
     var projects = h.list(d.projects).map(function(p,i){
       return '<article class="project" id="project-'+e(p.id)+'" tabindex="-1"><div class="project-top"><span class="number">0'+(i+1)+'</span><span>'+e(p.category)+'</span></div><h3>'+e(p.name)+'</h3><p>'+e(p.summary)+'</p><p class="result">'+e(p.result)+'</p>'+tags(p.stack)+'<div class="project-bottom"><span>'+e(p.when)+'</span>'+(p.url?'<a href="'+h.url(p.url)+'">Read team report <span aria-hidden="true">→</span></a>':'')+'</div></article>';
     }).join('');
@@ -39,8 +44,8 @@ window.THEMES.clean = {
     var skills=h.list(d.skills).map(function(s){return '<div class="skill-group"><h3>'+e(s.group)+'</h3>'+tags(s.items)+'</div>';}).join('');
     var links=h.list(d.links).map(function(l){return '<a class="button" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+e(l.label)+' <span aria-hidden="true">→</span></a>';}).join('');
     return '<a class="skip" href="#main">Skip to content</a><div class="wrap"><header><a class="identity" href="#"><span class="monogram">OR<span>_</span></span><span>'+e(d.name)+'</span></a><nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="nav-resume" href="'+h.url(d.resume)+'">Resume →</a></nav></header>'+
-    '<main id="main"><section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Electrical & Computer Engineering / UT Austin</p><h1>'+headline+'</h1><p class="hero-tagline">'+e(d.tagline)+'</p><p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="'+h.url(d.resume)+'">View resume →</a></div><p class="hero-note">Austin, TX <span> / </span> Graduating May 2027</p></div>'+
-    '<aside class="system" aria-label="Interactive project circuit"><div class="system-bar"><span>OSCAR / PROJECT CIRCUIT</span><span class="status-dot"></span></div>'+circuit+'<div class="system-footer"><span>SELECT A COMPONENT TO EXPLORE</span><span>06 PROJECTS</span></div></aside></section>'+
+    '<main id="main"><section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Electrical & Computer Engineering / UT Austin</p><h1>'+headline+'</h1>'+(d.tagline ? '<p class="hero-tagline">'+e(d.tagline)+'</p>' : '')+'<p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="'+h.url(d.resume)+'">View resume →</a></div><p class="hero-note">Austin, TX <span> / </span> Graduating May 2027</p></div>'+
+    '<aside class="system" aria-label="Interactive project circuit"><div class="system-bar"><span>OSCAR / PROJECT CIRCUIT</span><span class="status-dot"></span></div><div class="circuit-viewport" tabindex="0" role="region" aria-label="Project circuit; scroll horizontally on small screens">'+circuit+'</div><div class="system-footer"><span>SELECT A COMPONENT TO EXPLORE <span class="circuit-scroll-hint"> / SWIPE →</span></span><span>06 PROJECTS</span></div></aside></section>'+
     '<div class="highlights" aria-label="Experience highlights"><div><strong>30+</strong><span>security triages performed</span></div><div><strong>75+</strong><span>students tutored in computing</span></div><div><strong>HW ↔ SW</strong><span>architecture to implementation</span></div></div>'+
     '<section id="work"><div class="section-heading"><div><p class="eyebrow">01 / Selected projects</p><h2>Ideas, implemented.</h2></div><p>Real-time kernels, processor pipelines,<br>and signals made tangible.</p></div><div class="projects">'+projects+'</div></section>'+
     '<section id="experience"><div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2>Technical work. Human impact.</h2></div></div><div class="experience">'+xp+'</div></section>'+
