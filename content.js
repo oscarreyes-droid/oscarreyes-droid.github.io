@@ -5,12 +5,12 @@ window.PORTFOLIO = {
   "name": "Oscar Reyes",
   "initials": "OR",
   "photo": "",
-  "headline": "Writing firmware. Bringing hardware to life.",
-  "tagline": "My goal: a career writing firmware.",
+  "headline": "From code to circuits.",
+  "tagline": "Building firmware, real-time systems, and a deeper understanding of the hardware underneath.",
   "school": "Electrical & Computer Engineering · UT Austin · May 2027",
   "location": "Austin, TX",
   "status": "Aspiring firmware engineer · Embedded systems · Computer architecture",
-  "about": "My goal is to write firmware that brings hardware to life. I’m an electrical and computer engineering student at UT Austin, building real-time kernels and microcontroller applications in C and ARM assembly. My work in computer architecture and security operations shapes how I think about reliable systems.",
+  "about": "My goal is to write firmware that brings hardware to life. I’m an Electrical and Computer Engineering student at UT Austin, building real-time kernels and microcontroller applications in C and ARM assembly. My work in computer architecture and security operations shapes how I think about reliable systems.",
   "email": "oscarreyes@utexas.edu",
   "resume": "resume.pdf",
   "links": [
@@ -71,7 +71,8 @@ window.PORTFOLIO = {
       "summary": "Built a real-time kernel with priority-based scheduling, thread synchronization, and critical-section control for shared resources.",
       "result": "Validated timing with GPIO profiling of context-switch overhead, latency, and jitter.",
       "url": "",
-      "category": "Firmware / Real-time"
+      "category": "Firmware / Real-time",
+      "id": "rtos-kernel"
     },
     {
       "name": "LC-3b Processor & Simulator",
@@ -83,7 +84,8 @@ window.PORTFOLIO = {
       "summary": "Designed a two-pass assembler and instruction-level simulator supporting 25+ ISA instructions. Built cycle-level microarchitecture and five-stage pipeline simulators.",
       "result": "Implemented microcode, interrupts, address translation, caches, dependency detection, and stalls.",
       "url": "",
-      "category": "Architecture / Simulation"
+      "category": "Architecture / Simulation",
+      "id": "lc3b-processor"
     },
     {
       "name": "Multirate FIR Filter Bank",
@@ -96,7 +98,8 @@ window.PORTFOLIO = {
       "summary": "Extended a course-provided filter bank into a four-level analysis and synthesis pipeline, separating audio into five frequency bands and reconstructing the signal.",
       "result": "Explored subband reconstruction and signal-fidelity tradeoffs with Carlos Rojas and Emmanuel Ramirez.",
       "url": "documents/fir-filter-bank.pdf",
-      "category": "Signals / Audio"
+      "category": "Signals / Audio",
+      "id": "fir-filter-bank"
     },
     {
       "name": "Space Invaders on a Microcontroller",
@@ -109,7 +112,8 @@ window.PORTFOLIO = {
       "summary": "Built a real-time game with collision detection, enemy movement, score keeping, and multi-sprite rendering on the MSPM0G3507.",
       "result": "Integrated a 12-bit DAC for audio, an ADC-driven slide potentiometer, and a TFT LCD.",
       "url": "",
-      "category": "Firmware / Interactive"
+      "category": "Firmware / Interactive",
+      "id": "space-invaders"
     },
     {
       "name": "Programmable Stopwatch & Timer",
@@ -122,7 +126,8 @@ window.PORTFOLIO = {
       "summary": "Designed a custom datapath and finite-state controller supporting four watch and timer modes, with live I/O and seven-segment displays.",
       "result": "Verified timing and mode switching through simulation and hardware testing.",
       "url": "",
-      "category": "Digital logic / FPGA"
+      "category": "Digital logic / FPGA",
+      "id": "fpga-timer"
     },
     {
       "name": "Audio ↔ Image Signal Synthesis",
@@ -135,7 +140,8 @@ window.PORTFOLIO = {
       "summary": "Converted 28 seconds of mono audio into a time-frequency image using FFT analysis, companding, and RGB encoding, then reconstructed audio from the image.",
       "result": "Compared reconstruction fidelity and quantization effects with Carlos Rojas and Emmanuel Ramirez.",
       "url": "documents/audio-image-synthesis.pdf",
-      "category": "Signals / Representation"
+      "category": "Signals / Representation",
+      "id": "audio-image-synthesis"
     }
   ],
   "skills": [
