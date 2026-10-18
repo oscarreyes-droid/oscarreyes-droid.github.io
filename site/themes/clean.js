@@ -32,7 +32,10 @@ window.THEMES.clean = {
     var projects = h.list(d.projects).map(function(p,i){
       return '<article class="project" id="project-'+e(p.id)+'" tabindex="-1"><div class="project-top"><span class="number">0'+(i+1)+'</span><span>'+e(p.category)+'</span></div><h3>'+e(p.name)+'</h3><p>'+e(p.summary)+'</p><p class="result">'+e(p.result)+'</p>'+tags(p.stack)+'<div class="project-bottom"><span>'+e(p.when)+'</span>'+(p.url?'<a href="'+h.url(p.url)+'">Read team report <span aria-hidden="true">→</span></a>':'')+'</div></article>';
     }).join('');
-    var xp=h.list(d.experience).map(function(j){return '<article class="job"><div><p class="eyebrow">'+e(j.dates)+'</p><h3>'+e(j.role)+'</h3><p class="organization">'+e(j.org)+'</p></div><div><p>'+e(j.summary)+'</p>'+tags(j.tags)+'</div></article>';}).join('');
+    var xp = h.list(d.experience).map(function (j) {
+      var logo = j.logo ? '<img class="job-logo" src="' + h.url(j.logo) + '" alt="" width="64" height="64" loading="lazy">' : '';
+      return '<article class="job"><div class="job-heading">' + logo + '<div><p class="eyebrow">' + e(j.dates) + '</p><h3>' + e(j.role) + '</h3><p class="organization">' + e(j.org) + '</p></div></div><div><p>' + e(j.summary) + '</p>' + tags(j.tags) + '</div></article>';
+    }).join('');
     var skills=h.list(d.skills).map(function(s){return '<div class="skill-group"><h3>'+e(s.group)+'</h3>'+tags(s.items)+'</div>';}).join('');
     var links=h.list(d.links).map(function(l){return '<a class="button" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+e(l.label)+' <span aria-hidden="true">→</span></a>';}).join('');
     return '<a class="skip" href="#main">Skip to content</a><div class="wrap"><header><a class="identity" href="#"><span class="monogram">OR<span>_</span></span><span>'+e(d.name)+'</span></a><nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="nav-resume" href="'+h.url(d.resume)+'">Resume →</a></nav></header>'+

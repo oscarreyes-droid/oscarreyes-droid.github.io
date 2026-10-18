@@ -368,6 +368,21 @@ h3 {
   padding:30px 0;
   border-top:1px solid var(--line)
 }
+.job-heading {
+  display:flex;
+  align-items:flex-start;
+  gap:16px;
+}
+.job-heading > div { min-width:0; }
+.job-logo {
+  flex-shrink:0;
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  background:#080a08;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
 .job:last-child {
   border-bottom:1px solid var(--line)
 }

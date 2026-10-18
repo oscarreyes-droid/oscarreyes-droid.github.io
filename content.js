@@ -34,7 +34,8 @@ window.PORTFOLIO = {
         "Splunk",
         "Python",
         "Incident response"
-      ]
+      ],
+      "logo": "rsoc.jpg"
     },
     {
       "role": "Academic Mentor",
@@ -45,7 +46,8 @@ window.PORTFOLIO = {
       "tags": [
         "Mentorship",
         "Communication"
-      ]
+      ],
+      "logo": "texas.jpg"
     },
     {
       "role": "Undergraduate Tutor",
@@ -56,7 +58,8 @@ window.PORTFOLIO = {
       "tags": [
         "Computer architecture",
         "Teaching"
-      ]
+      ],
+      "logo": "texas.jpg"
     }
   ],
   "projects": [
