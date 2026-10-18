@@ -1,117 +1,187 @@
-/* =====================================================================
-   YOUR PORTFOLIO CONTENT
-   This is the only file you need to edit.
-   Change the text between the quotes "like this", save, and refresh.
-   Every style (theme) reads from this file, so you only fill it in once.
-   ===================================================================== */
-
+// Portfolio content — update your information here.
 window.PORTFOLIO = {
-
-  /* ---------- STYLE ----------
-     Pick your look: "terminal", "clean", or "story".
-     showThemePicker: true shows the style switcher in the corner.
-     Set it to false once you've picked your favorite.            */
-  theme: "clean",
-  showThemePicker: true,
-
-  /* ---------- ABOUT YOU ---------- */
-  name: "Anthony Cardozo",
-  initials: "AC",                       // shown if you don't add a photo
-  photo: "",                            // optional: "images/headshot.jpg"
-  headline: "Software engineer building cloud systems and developer tools.",
-  tagline: "I like building things people actually use.",   // used by the Story style
-  school: "CS at UT Austin, class of 2029",
-  location: "Austin, TX",
-  status: "Looking for Summer 2027 internships",             // leave "" to hide
-
-  about: "I've worked on AI evaluation at AWS, a browser-based compiler at a startup, and the platform my SHPE chapter runs on. Before all that, I built an online store for my family's candy business.",
-
-  /* ---------- CONTACT ---------- */
-  email: "anthonycardozo06@gmail.com",
-  resume: "resume.pdf",                 // upload your resume with this exact name, or "" to hide
-  links: [
-    { label: "LinkedIn", url: "https://linkedin.com/in/anthony-cardozo-4361b6310" },
-    { label: "GitHub",   url: "https://github.com/your-username" },
+  "theme": "clean",
+  "showThemePicker": false,
+  "name": "Oscar Reyes",
+  "initials": "OR",
+  "photo": "",
+  "headline": "Building close to the hardware.",
+  "tagline": "From processor pipelines to real-time systems.",
+  "school": "Electrical & Computer Engineering · UT Austin · May 2027",
+  "location": "Austin, TX",
+  "status": "Embedded systems · Computer architecture · Cybersecurity",
+  "about": "I’m an electrical and computer engineering student at UT Austin, focused on computer architecture and embedded systems. I build real-time software, explore how processors work, and investigate security threats as a SOC analyst.",
+  "email": "oscarreyes@utexas.edu",
+  "resume": "resume.pdf",
+  "links": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/oscarreyes19/"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/oscarreyes-droid"
+    }
   ],
-
-  /* ---------- EXPERIENCE ----------
-     Newest first. Copy a { ... }, block to add another.
-     Jobs, internships, research, org leadership, and your own
-     business all count.                                           */
-  experience: [
+  "experience": [
     {
-      role: "Software Engineering Intern",
-      org: "Amazon Web Services",
-      place: "Seattle, WA",
-      dates: "Summer 2026",
-      summary: "Built a weekly pipeline that grades an AI root-cause-analysis agent and found fixes that raised its average score 23%.",
-      tags: ["Lambda", "SQS", "Bedrock", "DynamoDB"],
+      "role": "Security Operations Center Analyst",
+      "org": "UT Regional Security Operations Center",
+      "place": "Austin, TX",
+      "dates": "June 2025 – Present",
+      "summary": "Performed 30+ security triages using Splunk SIEM logs to investigate threats and suspicious activity. Use CLI tools and Python scripts to identify indicators of compromise and support remediation, alongside web application and network vulnerability assessments.",
+      "tags": [
+        "Splunk",
+        "Python",
+        "Incident response"
+      ]
     },
     {
-      role: "Founding Engineer",
-      org: "One Dollar Computer",
-      place: "Austin, TX",
-      dates: "2026 – now",
-      summary: "Built the cloud compiler that lets you write C or Rust in the browser and flash a RISC-V board in under 6 seconds.",
-      tags: ["C", "Rust", "GCP", "WebHID"],
+      "role": "Academic Mentor",
+      "org": "UT Austin · Ramshorn Scholars Program",
+      "place": "Austin, TX",
+      "dates": "April 2025 – April 2026",
+      "summary": "Mentored four students through academic support, tutoring, and guidance. Participated in training and shared weekly feedback to help improve a program serving 100+ scholars.",
+      "tags": [
+        "Mentorship",
+        "Communication"
+      ]
     },
     {
-      role: "Website Lead",
-      org: "SHPE UT Austin",
-      place: "Austin, TX",
-      dates: "2026 – now",
-      summary: "Lead the platform 400+ members use to earn points for convention and stipends. 1,000+ check-ins in the first 3 weeks.",
-      tags: ["React", "Supabase"],
-    },
-    {
-      role: "Founder",
-      org: "Cardozo Enchilados",
-      place: "Dallas, TX",
-      dates: "2023 – now",
-      summary: "Run a Mexican candy business with my family: 1,500+ units sold, plus a Stripe storefront that replaced taking orders over DMs.",
-      tags: ["React", "Express", "MongoDB", "Stripe"],
-    },
+      "role": "Undergraduate Tutor",
+      "org": "The University of Texas at Austin",
+      "place": "Austin, TX",
+      "dates": "October 2024 – May 2025",
+      "summary": "Guided 75+ students through digital logic, microarchitecture encoding, and computer architecture. Hosted exam review sessions for ECE 306.",
+      "tags": [
+        "Computer architecture",
+        "Teaching"
+      ]
+    }
   ],
-
-  /* ---------- PROJECTS ----------
-     2 to 4 projects works best. Class projects count!
-     "result" is one line about what happened or what you learned.
-     "url" can link to a demo, GitHub repo, or photos ("" for none). */
-  projects: [
+  "projects": [
     {
-      name: "HONK",
-      when: "Hackathon · Apr 2026",
-      stack: ["Next.js", "Gemini", "Firebase"],
-      summary: "A focus app that checks your screen every minute. Drift off task and it honks at you and takes your bread.",
-      result: "Distracted time dropped from 33% to 8%",
-      url: "",
+      "name": "Real-Time Operating System Kernel",
+      "when": "Spring 2026",
+      "stack": [
+        "C",
+        "ARM Assembly",
+        "MSPM0G3507"
+      ],
+      "summary": "Built a real-time kernel with priority-based scheduling, thread synchronization, and critical-section control for shared resources.",
+      "result": "Validated timing with GPIO profiling of context-switch overhead, latency, and jitter.",
+      "url": "",
+      "category": "Firmware / Real-time"
     },
     {
-      name: "Landing Pad",
-      when: "Hackathon · Jul 2026",
-      stack: ["React", "TypeScript", "AWS CDK"],
-      summary: "A no-login city guide where outgoing interns pass down their favorite food, housing, and activity spots to the next class.",
-      result: "54 places on a color-coded map",
-      url: "",
+      "name": "LC-3b Processor & Simulator",
+      "when": "Fall 2025",
+      "stack": [
+        "C",
+        "Computer architecture"
+      ],
+      "summary": "Designed a two-pass assembler and instruction-level simulator supporting 25+ ISA instructions. Built cycle-level microarchitecture and five-stage pipeline simulators.",
+      "result": "Implemented microcode, interrupts, address translation, caches, dependency detection, and stalls.",
+      "url": "",
+      "category": "Architecture / Simulation"
     },
     {
-      name: "SHPE Chapter Platform",
-      when: "SHPE · 2026",
-      stack: ["React", "Supabase"],
-      summary: "Event check-ins, a points leaderboard, and an officer dashboard for our chapter.",
-      result: "1,000+ check-ins in 3 weeks",
-      url: "",
+      "name": "Multirate FIR Filter Bank",
+      "when": "Fall 2025 · Team project",
+      "stack": [
+        "MATLAB",
+        "DSP",
+        "Wavelets"
+      ],
+      "summary": "Extended a course-provided filter bank into a four-level analysis and synthesis pipeline, separating audio into five frequency bands and reconstructing the signal.",
+      "result": "Explored subband reconstruction and signal-fidelity tradeoffs with Carlos Rojas and Emmanuel Ramirez.",
+      "url": "documents/fir-filter-bank.pdf",
+      "category": "Signals / Audio"
     },
+    {
+      "name": "Space Invaders on a Microcontroller",
+      "when": "Fall 2024",
+      "stack": [
+        "C",
+        "ARM Assembly",
+        "Embedded systems"
+      ],
+      "summary": "Built a real-time game with collision detection, enemy movement, score keeping, and multi-sprite rendering on the MSPM0G3507.",
+      "result": "Integrated a 12-bit DAC for audio, an ADC-driven slide potentiometer, and a TFT LCD.",
+      "url": "",
+      "category": "Firmware / Interactive"
+    },
+    {
+      "name": "Programmable Stopwatch & Timer",
+      "when": "Spring 2025",
+      "stack": [
+        "Verilog",
+        "Basys3 FPGA",
+        "Digital logic"
+      ],
+      "summary": "Designed a custom datapath and finite-state controller supporting four watch and timer modes, with live I/O and seven-segment displays.",
+      "result": "Verified timing and mode switching through simulation and hardware testing.",
+      "url": "",
+      "category": "Digital logic / FPGA"
+    },
+    {
+      "name": "Audio ↔ Image Signal Synthesis",
+      "when": "Fall 2025 · Team project",
+      "stack": [
+        "MATLAB",
+        "FFT",
+        "Signal processing"
+      ],
+      "summary": "Converted 28 seconds of mono audio into a time-frequency image using FFT analysis, companding, and RGB encoding, then reconstructed audio from the image.",
+      "result": "Compared reconstruction fidelity and quantization effects with Carlos Rojas and Emmanuel Ramirez.",
+      "url": "documents/audio-image-synthesis.pdf",
+      "category": "Signals / Representation"
+    }
   ],
-
-  /* ---------- SKILLS ----------
-     Group them however makes sense for your major.               */
-  skills: [
-    { group: "Languages",  items: ["Java", "C", "Python", "JavaScript", "TypeScript", "x86 Assembly"] },
-    { group: "Frameworks", items: ["React", "Next.js", "Node", "Express", "Supabase", "Firebase"] },
-    { group: "Cloud",      items: ["AWS Lambda", "S3", "SQS", "DynamoDB", "Bedrock", "CDK"] },
+  "skills": [
+    {
+      "group": "Languages",
+      "items": [
+        "C",
+        "C++",
+        "ARM Assembly",
+        "Verilog",
+        "Python",
+        "Java",
+        "SQL",
+        "JavaScript",
+        "HTML / CSS"
+      ]
+    },
+    {
+      "group": "Hardware & systems",
+      "items": [
+        "MSPM0G3507",
+        "Basys3 FPGA",
+        "UART",
+        "I2C",
+        "SPI",
+        "MATLAB",
+        "Docker"
+      ]
+    },
+    {
+      "group": "Security & software",
+      "items": [
+        "Splunk",
+        "Wireshark",
+        "Nmap",
+        "Burp Suite",
+        "Metasploit",
+        "React"
+      ]
+    }
   ],
-
-  /* ---------- AWARDS (optional, use [] for none) ---------- */
-  awards: ["Amazon Future Engineer Scholar", "Dijkstra Scholar", "HITEC Scholar", "HSF Scholar"],
+  "awards": [
+    "Engineering Honors",
+    "University Honors",
+    "HSF Scholar",
+    "Ramshorn Scholar",
+    "T.W. Whaley, Jr. Friends of Alec Endowed Scholar"
+  ]
 };

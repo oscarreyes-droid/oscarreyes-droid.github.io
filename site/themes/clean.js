@@ -1,40 +1,23 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.clean = {
-  label: "Clean",
-  css: "site/themes/clean.css",
+  label: "Clean", css: "site/themes/clean.css",
   render: function (d, h) {
     var e = h.esc;
-    var projects = h.list(d.projects).map(function (p, i) {
-      var tag = p.url ? "a" : "div";
-      var href = p.url ? ' href="' + h.url(p.url) + '"' + h.ext(p.url) : "";
-      return "<" + tag + ' class="proj"' + href + '><div class="shot"><div class="dots"><b></b><b></b><b></b></div>' +
-        '<div class="screen s' + ((i % 4) + 1) + '">' + e(p.name) + "</div></div>" +
-        "<h3>" + e(p.name) + " <small>" + e(h.list(p.stack).slice(0, 2).join(" · ")) + "</small></h3>" +
-        "<p>" + e(p.summary) + (p.result ? " " + e(p.result) + "." : "") + "</p></" + tag + ">";
-    }).join("");
-    var xp = h.list(d.experience).map(function (j) {
-      return '<li><div class="logo">' + e(h.abbr(j.org)) + '</div><div><div class="role">' + e(j.role) + '</div><div class="org">' +
-        e(j.org) + (j.place ? " · " + e(j.place) : "") + "</div></div><time>" + e(j.dates) + "</time></li>";
-    }).join("");
-    var skills = [];
-    h.list(d.skills).forEach(function (s) { h.list(s.items).forEach(function (it) { skills.push("<span>" + e(it) + "</span>"); }); });
-    var awards = h.list(d.awards).length
-      ? '<section><h2>Recognition</h2><div class="skills">' + d.awards.map(function (a) { return "<span>" + e(a) + "</span>"; }).join("") + "</div></section>"
-      : "";
-    var links = h.list(d.links).map(function (l, i) {
-      return '<a class="btn' + (i === 0 ? " primary" : "") + '" href="' + h.url(l.url) + '"' + h.ext(l.url) + ">" + e(l.label) + "</a>";
-    }).join("");
-
-    return '<div class="wrap">' +
-      '<header><div class="me">' + h.avatar("avatar") + e(d.name) + '</div><nav><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav></header>' +
-      '<section class="hero"><h1>' + e(d.headline) + " <span>" + e(d.school) + ".</span></h1><p>" + e(d.about) + "</p>" +
-      (d.status ? '<span class="now"><i aria-hidden="true"></i>' + e(d.status) + "</span>" : "") + "</section>" +
-      '<section id="work"><h2>Selected work</h2><div class="grid">' + projects + "</div></section>" +
-      '<section id="experience"><h2>Experience</h2><ul class="xp">' + xp + "</ul></section>" +
-      '<section><h2>Stack</h2><div class="skills">' + skills.join("") + "</div></section>" + awards +
-      '<section id="contact" class="contact"><h2>Contact</h2><div class="links">' + links +
-      (d.resume ? '<a class="btn" href="' + h.url(d.resume) + '">Resume</a>' : "") +
-      (d.email ? '<a class="email" href="mailto:' + e(d.email) + '">' + e(d.email) + "</a>" : "") + "</div></section>" +
-      "<footer>© " + new Date().getFullYear() + " " + e(d.name) + "</footer></div>";
-  },
+    function tags(a) { return '<div class="tags">' + h.list(a).map(function(t){return '<span>'+e(t)+'</span>';}).join('')+'</div>'; }
+    var projects = h.list(d.projects).map(function(p,i){
+      return '<article class="project"><div class="project-top"><span class="number">0'+(i+1)+'</span><span>'+e(p.category)+'</span></div><h3>'+e(p.name)+'</h3><p>'+e(p.summary)+'</p><p class="result">'+e(p.result)+'</p>'+tags(p.stack)+'<div class="project-bottom"><span>'+e(p.when)+'</span>'+(p.url?'<a href="'+h.url(p.url)+'">Read team report <span aria-hidden="true">→</span></a>':'')+'</div></article>';
+    }).join('');
+    var xp=h.list(d.experience).map(function(j){return '<article class="job"><div><p class="eyebrow">'+e(j.dates)+'</p><h3>'+e(j.role)+'</h3><p class="organization">'+e(j.org)+'</p></div><div><p>'+e(j.summary)+'</p>'+tags(j.tags)+'</div></article>';}).join('');
+    var skills=h.list(d.skills).map(function(s){return '<div class="skill-group"><h3>'+e(s.group)+'</h3>'+tags(s.items)+'</div>';}).join('');
+    var links=h.list(d.links).map(function(l){return '<a class="button" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+e(l.label)+' <span aria-hidden="true">→</span></a>';}).join('');
+    return '<a class="skip" href="#main">Skip to content</a><div class="wrap"><header><a class="identity" href="#"><span class="monogram">OR<span>_</span></span><span>'+e(d.name)+'</span></a><nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="nav-resume" href="'+h.url(d.resume)+'">Resume →</a></nav></header>'+
+    '<main id="main"><section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Electrical & Computer Engineering / UT Austin</p><h1>Building close<br>to the <span>hardware.</span></h1><p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="'+h.url(d.resume)+'">View resume →</a></div><p class="hero-note">Austin, TX <span> / </span> Graduating May 2027</p></div>'+
+    '<aside class="system" aria-label="Areas of focus: embedded systems, computer architecture, and cybersecurity"><div class="system-bar"><span>OSCAR / SYSTEM MAP</span><span class="status-dot"></span></div><div class="circuit"><div class="circuit-core"><span>OR</span><small>HARDWARE ↔ SOFTWARE</small></div><div class="system-node n1">01 / EMBEDDED SYSTEMS</div><div class="system-node n2">02 / COMPUTER ARCHITECTURE</div><div class="system-node n3">03 / CYBERSECURITY</div></div><div class="system-footer"><span>C · ARM · VERILOG · PYTHON</span><span>01—03</span></div></aside></section>'+
+    '<div class="highlights" aria-label="Experience highlights"><div><strong>30+</strong><span>security triages performed</span></div><div><strong>75+</strong><span>students tutored in computing</span></div><div><strong>HW ↔ SW</strong><span>architecture to implementation</span></div></div>'+
+    '<section id="work"><div class="section-heading"><div><p class="eyebrow">01 / Selected projects</p><h2>Ideas, implemented.</h2></div><p>Real-time kernels, processor pipelines,<br>and signals made tangible.</p></div><div class="projects">'+projects+'</div></section>'+
+    '<section id="experience"><div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2>Technical work. Human impact.</h2></div></div><div class="experience">'+xp+'</div></section>'+
+    '<section id="toolkit"><div class="section-heading"><div><p class="eyebrow">03 / Toolkit</p><h2>What I work with.</h2></div></div><div class="skill-grid">'+skills+'</div></section>'+
+    '<section class="education"><div><p class="eyebrow">Education & community</p><h2>The University of Texas at Austin</h2><p>B.S. Electrical & Computer Engineering · May 2027<br>Track: Computer Architecture and Embedded Systems</p><p>Active member of UT SHPE and IEEE since August 2023.<br>English & Spanish · Eligible to work in the U.S. without restrictions.</p></div><div><h3>Recognition</h3><ul>'+h.list(d.awards).map(function(a){return '<li>'+e(a)+'</li>';}).join('')+'</ul></div></section>'+
+    '<section id="contact" class="contact"><p class="eyebrow">04 / Get in touch</p><h2>Let’s build what’s next.</h2><p>For opportunities in embedded systems, computer architecture, and security, I’d love to connect.</p><a class="contact-email" href="mailto:'+e(d.email)+'">'+e(d.email)+' <span aria-hidden="true">→</span></a><div class="contact-links">'+links+'<a class="button" href="'+h.url(d.resume)+'">View resume →</a></div></section></main><footer><span>© '+new Date().getFullYear()+' '+e(d.name)+'</span><a href="#">Back to top ↑</a></footer></div>';
+  }
 };
