@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 420" fill="none">
+  <title>Firmware signal path</title>
+  <desc>Conceptual embedded architecture showing sensor input, an ADC interrupt, peripheral driver, RTOS tasks, and output. A timer and SWD debugger connect to the firmware.</desc>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#344037"/></pattern>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0 0 6 3 0 6" stroke="#d7ef96"/></marker>
+  </defs>
+  <path fill="#181e1a" d="M0 0h460v420H0z"/><path fill="url(#grid)" d="M0 0h460v420H0z"/>
+  <g stroke="#d7ef96" stroke-width="1.4" marker-end="url(#arrow)">
+    <path d="M115 73h36"/><path d="M307 73h36"/><path d="M381 102v44H230v30"/>
+    <path d="M230 237v38"/><path d="M230 335v36"/><path d="M112 206h20v100h25"/>
+    <path d="M346 306h-39" stroke-dasharray="4 4"/>
+  </g>
+  <g fill="#101412" stroke="#52644c">
+    <rect x="30" y="44" width="85" height="58" rx="5"/><rect x="151" y="44" width="156" height="58" rx="5"/><rect x="343" y="44" width="87" height="58" rx="5"/>
+    <rect x="30" y="182" width="82" height="48" rx="5"/><rect x="157" y="176" width="150" height="61" rx="5" stroke="#d7ef96"/>
+    <rect x="157" y="275" width="150" height="60" rx="5" stroke="#d7ef96"/><rect x="346" y="282" width="84" height="48" rx="5"/>
+    <rect x="157" y="371" width="150" height="30" rx="5"/>
+  </g>
+  <g font-family="Consolas,monospace" text-anchor="middle">
+    <g fill="#eef1e8" font-size="12"><text x="72" y="69">SENSOR</text><text x="229" y="69">ADC / IRQ</text><text x="386" y="69">ISR</text><text x="71" y="203">TIMER</text><text x="232" y="201">PERIPHERAL</text><text x="232" y="218">DRIVER</text><text x="232" y="300">RTOS TASKS</text><text x="388" y="303">SWD</text><text x="232" y="391">GPIO / PWM</text></g>
+    <g fill="#a9b5aa" font-size="9"><text x="72" y="87">INPUT</text><text x="229" y="87">SAMPLE → INTERRUPT</text><text x="386" y="87">CAPTURE</text><text x="71" y="219">TICK</text><text x="232" y="318">SCHEDULE · PROCESS</text><text x="388" y="319">DEBUG</text><text x="284" y="136">EVENT / QUEUE</text><text x="275" y="260">DATA</text><text x="278" y="357">OUTPUT</text></g>
+  </g>
+  <g stroke="#d7ef96"><path d="M169 171v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8m13 8v-8"/><path d="M169 242v8m13-8v8m13-8v8m13-8v8m13-8v8m13-8v8m13-8v8m13-8v8m13-8v8m13-8v8"/></g>
+</svg>

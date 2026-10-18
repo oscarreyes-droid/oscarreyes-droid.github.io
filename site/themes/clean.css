@@ -184,63 +184,10 @@ nav {
 .system-footer {
   border-top:1px solid var(--line)
 }
-.circuit {
-  height:300px;
-  position:relative;
-  background-image:radial-gradient(#3b493b 1px,transparent 1px);
-  background-size:18px 18px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:15px
-}
-.circuit:before {
-  content:'';
-  position:absolute;
-  top:40px;
-  bottom:30px;
-  width:1px;
-  background:var(--accent);
-  opacity:.4
-}
-.circuit-core {
-  z-index:1;
-  background:var(--bg);
-  border:1px solid var(--accent);
-  outline:5px solid #263025;
-  border-radius:7px;
-  width:170px;
-  height:90px;
-  display:grid;
-  place-content:center;
-  text-align:center;
-  margin-bottom:12px
-}
-.circuit-core>span {
-  font:32px var(--mono);
-  color:var(--accent)
-}
-.circuit-core small {
-  font:8px var(--mono);
-  margin-top:6px;
-  color:var(--muted)
-}
-.system-node {
-  z-index:1;
-  background:var(--surface);
-  border:1px solid var(--line);
-  padding:7px 13px;
-  font:9px var(--mono);
-  letter-spacing:.5px
-}
-.n1 {
-  align-self:flex-start;
-  margin-left:25px
-}
-.n2 {
-  align-self:flex-end;
-  margin-right:20px
+.firmware-diagram {
+  display:block;
+  width:100%;
+  height:auto;
 }
 .highlights {
   display:grid;
@@ -312,10 +259,12 @@ h3 {
   border:1px solid var(--line);
   border-radius:9px;
   padding:28px;
-  transition:border-color .2s
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease
 }
-.project:hover {
-  border-color:#78876a
+.project:hover, .project:focus-within {
+  border-color:#78876a;
+  transform:translateY(-7px);
+  box-shadow:0 16px 34px #0005;
 }
 .project-top {
   display:flex;
@@ -500,15 +449,6 @@ footer a {
     font-size:10px;
     letter-spacing:.5px
   }
-  .system-node {
-    font-size:8px
-  }
-  .n1 {
-    margin-left:12px
-  }
-  .n2 {
-    margin-right:10px
-  }
 }
 @media(max-width:700px) {
   .wrap {
@@ -550,9 +490,6 @@ footer a {
   .system {
     max-width:420px;
     width:100%
-  }
-  .circuit {
-    height:250px
   }
   .system-footer {
     font-size:8px
@@ -617,4 +554,8 @@ footer a {
   * {
     transition:none!important
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project:hover, .project:focus-within { transform:none; }
 }
