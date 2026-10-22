@@ -47,6 +47,7 @@
     document.getElementById("theme-css").setAttribute("href", theme.css);
     document.documentElement.setAttribute("data-style", name);
     document.getElementById("app").innerHTML = theme.render(d, h);
+    if (window.BasysDemo) window.BasysDemo.mount();
     document.title = d.name ? d.name + " · Portfolio" : "Portfolio";
     if (d.showThemePicker !== false) picker(name);
   }

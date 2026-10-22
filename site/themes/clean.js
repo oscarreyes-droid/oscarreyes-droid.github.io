@@ -40,8 +40,9 @@ window.THEMES.clean = {
           (photo.caption ? '<figcaption>' + e(photo.caption) + '</figcaption>' : '') + '</figure>';
       }).join('');
       var gallery = photos ? '<div class="project-gallery">' + photos + '</div>' : '';
+      var demo = p.demo === 'basys3' && window.BasysDemo ? window.BasysDemo.render() : '';
       var details = h.list(p.details).length ? '<ul class="project-details">' + p.details.map(function (detail) { return '<li>' + e(detail) + '</li>'; }).join('') + '</ul>' : '';
-      return '<article class="project' + (photos ? ' project-with-photos' : '') + '" id="project-' + e(p.id) + '" tabindex="-1"><div class="project-top"><span class="number">0' + (i + 1) + '</span><span>' + e(p.category) + '</span></div><h3>' + e(p.name) + '</h3>' + gallery + '<p>' + e(p.summary) + '</p>' + details + '<p class="result">' + e(p.result) + '</p>' + tags(p.stack) + '<div class="project-bottom"><span>' + e(p.when) + '</span>' + (p.url ? '<a class="report-button" href="' + h.url(p.url) + '">Read team report <span aria-hidden="true">→</span></a>' : '') + '</div></article>';
+      return '<article class="project' + (photos ? ' project-with-photos' : '') + (demo ? ' project-with-demo' : '') + '" id="project-' + e(p.id) + '" tabindex="-1"><div class="project-top"><span class="number">0' + (i + 1) + '</span><span>' + e(p.category) + '</span></div><h3>' + e(p.name) + '</h3>' + gallery + '<p>' + e(p.summary) + '</p>' + details + '<p class="result">' + e(p.result) + '</p>' + demo + tags(p.stack) + '<div class="project-bottom"><span>' + e(p.when) + '</span>' + (p.url ? '<a class="report-button" href="' + h.url(p.url) + '">Read team report <span aria-hidden="true">→</span></a>' : '') + '</div></article>';
     }).join('');
     var xp = h.list(d.experience).map(function (j) {
       var logo = j.logo ? '<img class="job-logo" src="' + h.url(j.logo) + '" alt="" width="64" height="64" loading="lazy">' : '';
