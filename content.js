@@ -82,6 +82,18 @@ window.PORTFOLIO = {
       "details": [
         "Shared three LiDAR and two IR sensor readings over CAN to guide gap-following and PID steering.",
         "Combined PWM motor and servo control with soft-start ramping, bumper-triggered recovery, and Wi-Fi race start/stop commands."
+      ],
+      "images": [
+        {
+          "src": "robotorthog.jpg",
+          "alt": "Side view of the autonomous racing robot, showing stacked microcontroller boards, wiring, wheels, and steering hardware.",
+          "caption": "The team-built racing robot, with its stacked control boards and steering hardware."
+        },
+        {
+          "src": "robottopdown.jpg",
+          "alt": "Top-down view of the racing robot with two MSPM0G3507 boards and distance sensors around the chassis.",
+          "caption": "Top-down view of the two-microcontroller platform and distance-sensor layout."
+        }
       ]
     },
     {
