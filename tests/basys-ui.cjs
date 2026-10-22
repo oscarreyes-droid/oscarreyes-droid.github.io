@@ -7,6 +7,7 @@ await page.clock.install();
 async function advance(ms){await page.clock.runFor(ms);}
 await page.goto(process.env.BASE_URL || 'http://127.0.0.1:8000/',{waitUntil:'networkidle'});
 await page.locator('#basys3-demo > summary').click();await advance(50);
+if (!await page.locator('.basys-accessible').evaluate(el=>el.open)) await page.locator('.basys-accessible > summary').click();
 const val=()=>page.locator('[data-value]').textContent();const state=()=>page.locator('[data-state]').textContent();
 assert.equal(await val(),'00.00');assert.equal(await page.locator('[data-switch]').count(),16);assert.equal(await page.locator('[data-switch]:disabled').count(),6);
 await page.locator('[data-start]').click();await advance(1100);assert.equal(await state(),'COUNT UP');assert.ok(Number(await val())>=.9);
@@ -28,7 +29,8 @@ await page.locator('[data-switch="1"]').click();assert.equal(await state(),'HOLD
 // Closing must freeze the entire simulation and release animation work.
 await page.locator('[data-speed]').selectOption('1');
 await page.locator('[data-reset]').click();
-await page.locator('[data-start]').click();await advance(150);await page.locator('#basys3-demo > summary').click();await advance(50);const closed=await val();await advance(500);assert.equal(await val(),closed);
+await page.locator('[data-start]').click();await advance(150);await page.locator('#basys3-demo > summary').click();await advance(50);
+if (!await page.locator('.basys-accessible').evaluate(el=>el.open)) await page.locator('.basys-accessible > summary').click();const closed=await val();await advance(500);assert.equal(await val(),closed);
 await page.locator('#basys3-demo > summary').click();await advance(200);assert.notEqual(await val(),closed);
 await page.locator('[data-reset]').click();await page.locator('[data-speed]').selectOption('1');
 for(const width of [1440,768,390,320]){

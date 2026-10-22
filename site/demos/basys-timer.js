@@ -16,13 +16,13 @@
       const purpose = n < 2 ? 'mode bit ' + n : n >= 12 ? 'preset tens bit ' + (n - 12) : n >= 8 ? 'preset ones bit ' + (n - 8) : 'not connected';
       return '<div class="basys-switch-unit"><span class="board-led" aria-hidden="true"></span><button type="button" role="switch" aria-checked="false" aria-label="SW' + n + ' · ' + purpose + '" title="SW' + n + ': ' + purpose + '" data-switch="' + n + '"' + (!used ? ' disabled' : '') + '><span></span></button><span class="switch-label">' + n + '</span></div>';
     }).join('');
-    return '<details class="basys-demo" id="basys3-demo"><summary><span>Try the FPGA timer</span><span class="demo-summary-hint">Interactive Basys3 board <span aria-hidden="true">＋</span></span></summary>' +
+    return '<details class="basys-demo" id="basys3-demo"><summary><span>Try the 3D FPGA board</span><span class="demo-summary-hint">Rotate · flip · run <span aria-hidden="true">＋</span></span></summary>' +
       '<div class="basys-content"><div class="basys-intro"><div><p class="eyebrow">Hands on / Digital logic</p><h4>Flip a switch. Start the clock.</h4><p>A browser simulation of the timer designed by Oscar Reyes and Zoe Gonzalez. Choose a mode, then press the board’s top button to start or pause.</p></div><span class="simulation-badge">Browser simulation</span></div>' +
       '<div class="basys-quick-controls"><label>Choose mode & reset<select data-mode>' + Timer.MODES.map((m, i) => '<option value="' + i + '">' + m + '</option>').join('') + '</select></label>' +
       '<div class="preset-controls"><label>Preset seconds<input type="number" min="0" max="99" step="1" value="5" data-preset></label><button type="button" class="basys-action" data-load>Load preset & reset</button></div>' +
       '<label>Demo speed<select data-speed><option value="1">1× · original clock</option><option value="10">10× · fast forward</option><option value="100">100× · fast forward</option></select></label></div>' +
       '<p class="basys-feedback" data-feedback aria-live="polite">Mode 00: count up from zero. Press Start/stop.</p>' +
-      '<div class="basys-board-scroll" tabindex="0" role="region" aria-label="Interactive board; scroll sideways on small screens"><div class="basys-board" aria-label="Stylized Basys3 FPGA board">' +
+      '<div class="basys-3d-shell" data-three-host><div class="basys-3d-toolbar"><span>3D BOARD / INTERACTIVE</span><div><button type="button" data-top-view>Top view</button><button type="button" data-reset-view>Reset view</button></div></div><div class="basys-3d-surface" data-3d-surface></div><p data-3d-status role="status">Loading 3D board… Keyboard-accessible controls are available below.</p><p class="basys-3d-note">Supplied Basys3 CAD model · timer behavior follows the uploaded Verilog.</p></div><details class="basys-accessible" open><summary>Keyboard-accessible board controls</summary><div class="basys-board-scroll" tabindex="0" role="region" aria-label="Interactive board; scroll sideways on small screens"><div class="basys-board" aria-label="Stylized Basys3 FPGA board">' +
       '<div class="board-connectors" aria-hidden="true"><span class="connector-power">POWER</span><span class="connector-jtag">MICRO USB / JTAG</span><span class="connector-vga">VGA</span><span class="connector-usb">USB HOST</span></div><div class="pmod-headers" aria-hidden="true"><span>JA</span><span>JB</span><span>JC</span><span>JXADC</span></div><span class="board-mount bottom-left" aria-hidden="true"></span><span class="board-mount bottom-right" aria-hidden="true"></span><div class="board-brand"><strong>BASYS 3</strong><span>DIGILENT · ARTIX-7 FPGA</span></div>' +
       '<div class="board-body"><div class="board-left"><span class="board-silkscreen">FOUR-DIGIT SEVEN-SEGMENT DISPLAY</span><div class="basys-display" role="img" aria-label="Timer display 00.00">' + digits + '</div><span class="board-silkscreen display-unit">SECONDS . HUNDREDTHS</span></div>' +
       '<div class="fpga-chip" aria-hidden="true"><span>ARTIX-7</span><strong>XC7A35T</strong><small>LOGIC / CONTROL</small></div>' +
@@ -30,9 +30,9 @@
       '<div class="board-switches">' + switches + '</div><div class="switch-groups" aria-hidden="true"><span>SW15–12 / TENS</span><span>SW11–8 / ONES</span><span>SW7–2 / UNUSED</span><span>SW1–0 / MODE</span></div>' +
       '<div class="board-footer"><span>100 MHz OSC</span><span>SWITCHES: UP = 1 · DOWN = 0</span><span class="board-power">● POWER</span></div></div></div>' +
       '<p class="board-scroll-hint">On a phone, swipe sideways across the board to reach all controls.</p>' +
-      '<div class="basys-readout"><div><span>Controller state</span><strong data-state aria-live="polite">HOLD UP</strong></div><div><span>Mode · SW1:0</span><strong data-mode-bits>00</strong></div><div><span>Preset · SW15:8</span><strong data-preset-bits>0000 0000</strong></div><div><span>Display</span><strong data-value>00.00</strong></div></div>' +
+      '</details><div class="basys-readout"><div><span>Controller state</span><strong data-state aria-live="polite">HOLD UP</strong></div><div><span>Mode · SW1:0</span><strong data-mode-bits>00</strong></div><div><span>Preset · SW15:8</span><strong data-preset-bits>0000 0000</strong></div><div><span>Display</span><strong data-value>00.00</strong></div></div>' +
       '<div class="basys-guide"><div><h5>Try a countdown</h5><ol><li>Choose “Count down from preset.”</li><li>Enter 5 seconds and select “Load preset & reset.”</li><li>Press Start/stop. Press again to pause or resume.</li></ol></div><div><h5>Try the actual board inputs</h5><p>SW1–0 select the four modes. SW15–12 set the tens digit and SW11–8 set the ones digit in binary-coded decimal (0–9). Reset after changing mode; the live switches do not reset automatically. SW7–2 are unused.</p></div></div>' +
-      '<details class="basys-notes"><summary>About this simulation</summary><p>The counter and button-edge logic follow the uploaded Verilog. At a 100 MHz input, COUNT[19] produces about 95.37 counter ticks per second, so a displayed second takes about 1.049 real seconds at 1×. Fast forward only changes playback speed.</p><p>This is a behavioral JavaScript simulation, not an FPGA or an in-browser Verilog compiler. The display is shown continuously instead of scanning its anodes. Power-up is initialized deterministically, and simulation time freezes while this demo is closed or the tab is hidden. Invalid BCD presets retain the last decoded segment pattern, as in the supplied decoder.</p></details></div></details>';
+      '<details class="basys-notes"><summary>About this simulation</summary><p>The counter and button-edge logic follow the uploaded Verilog. At a 100 MHz input, COUNT[19] produces about 95.37 counter ticks per second, so a displayed second takes about 1.049 real seconds at 1×. Fast forward only changes playback speed.</p><p>This is a behavioral JavaScript simulation with the supplied Basys3 CAD geometry, not a physical FPGA or in-browser Verilog compiler. The display is shown continuously instead of scanning its anodes. Power-up is initialized deterministically, and simulation time freezes while this demo is closed or the tab is hidden. Invalid BCD presets retain the last decoded segment pattern, as in the supplied decoder.</p></details></div></details>';
   }
   function mount() {
     dispose();
@@ -40,8 +40,21 @@
     if (!root) { dispose = function () {}; return; }
     const model = new Timer();
     let speed = 1, last = 0, remainder = 0, raf = 0, pressTicks = 0, stateText = '';
+    let boardView = null, attempted3D = false;
     const query = s => root.querySelector(s);
+    function activate3D() {
+      if (!root.open || attempted3D || !window.Basys3D) return;
+      attempted3D = true;
+      boardView = window.Basys3D.mount(query('[data-three-host]'), {
+        onSwitch(index) { model.setSwitch(index, !(model.switches & (1 << index))); paint(); },
+        onStart() { if (!pressTicks) pressTicks = 6; },
+        onReset: reset,
+        onUnavailable() { query('.basys-accessible').open = true; }
+      });
+      if (boardView) { query('.basys-accessible').open = false; paint(); }
+    }
     function paint() {
+      if (boardView) boardView.update(model);
       const masks = model.segments.slice().reverse();
       root.querySelectorAll('.basys-digit').forEach((digit, i) => {
         digit.querySelectorAll('[data-segment]').forEach(el => {
@@ -101,13 +114,14 @@
       if (event.target.matches('[data-speed]')) { speed = Number(event.target.value); last = 0; remainder = 0; }
     }
     function input(event) { if (event.target.matches('[data-preset]')) event.target.setCustomValidity(''); }
-    const openObserver = new MutationObserver(function () { if (root.open) startFrame(); else stopFrame(); });
+    const openObserver = new MutationObserver(function () { if (root.open) { activate3D(); startFrame(); } else stopFrame(); });
     openObserver.observe(root, { attributes: true, attributeFilter: ['open'] });
     function visibility() { if (document.hidden) stopFrame(); else startFrame(); }
     root.addEventListener('click', click); root.addEventListener('change', change); root.addEventListener('input', input);
     document.addEventListener('visibilitychange', visibility);
-    dispose = function () { stopFrame(); root.removeEventListener('click', click); root.removeEventListener('change', change); root.removeEventListener('input', input); openObserver.disconnect(); document.removeEventListener('visibilitychange', visibility); };
-    paint(); startFrame();
+    window.addEventListener('basys-3d-ready', activate3D);
+    dispose = function () { stopFrame(); if (boardView) boardView.dispose(); window.removeEventListener('basys-3d-ready', activate3D); root.removeEventListener('click', click); root.removeEventListener('change', change); root.removeEventListener('input', input); openObserver.disconnect(); document.removeEventListener('visibilitychange', visibility); };
+    paint(); activate3D(); startFrame();
   }
   window.BasysDemo = { render, mount };
 })();

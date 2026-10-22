@@ -3,8 +3,9 @@
 The `fpga-timer` project opts into this component with `demo: "basys3"` in
 `content.js`. `BasysDemo.render()` produces its markup, and `site/app.js` calls
 `BasysDemo.mount()` after rendering. Remounting disposes the previous listeners
-and animation loop. The demo runs entirely in the browser, with no network
-requests, third-party runtime dependencies, or backend.
+and animation loop. The demo runs entirely in the browser and fetches only local static assets; no
+backend or runtime CDN is needed. Three.js 0.180.0 and OrbitControls are served
+locally under their MIT license.
 
 ## Behavior and source mapping
 
@@ -69,8 +70,25 @@ server address. The browser checks exercise all four modes, preset loading,
 start/pause/resume, reset, both limits, invalid BCD, raw switches, close/reopen,
 keyboard controls, and desktop/tablet/phone layout.
 
-## Refreshing cached assets
+## 3D view and asset refresh
 
-After changing scripts or styles, run `python3 scripts/version-assets.py`. This
-updates content-hashed resource URLs in the HTML and theme stylesheet mappings.
-The site still runs without a build step.
+`basys-board-3d.js` loads a rotatable model tessellated from the supplied STEP assembly with
+mesh-level raycasting for the real mode/preset switches and BTNU/BTNC controls.
+The community CAD model comes from the supplied GrabCAD archive; it has not been independently measured against the physical unit.
+The same timer model drives both the 3D display and the keyboard-accessible 2D
+controls. WebGL-unavailable browsers retain the working 2D controls.
+
+Three.js 0.180.0 was downloaded from its npm distribution with SHA-512 integrity
+verification. The local vendor directory includes its MIT license. Vendored example modules have their import paths adjusted to the local Three.js files.
+There are no external runtime CDN requests.
+
+Run the 3D interaction checks with Playwright/Chromium available:
+
+```sh
+node tests/basys-3d.cjs
+```
+
+After changing scripts or CSS, run `python3 scripts/version-assets.py`. This
+updates the content hashes in the HTML and in each theme's stylesheet URL to
+prevent previously cached resources from hiding an update. It is idempotent;
+there is still no production build step.

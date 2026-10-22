@@ -9,6 +9,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def version(path):
     return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()[:12]
 
+# The CAD viewer also loads its model and PCB photograph lazily.
+viewer = ROOT / 'site/demos/basys-board-3d.js'
+if viewer.exists():
+    text = viewer.read_text()
+    text = re.sub(r"(new URL\(')(\.\./\.\./models/[^'?]+)(?:\?v=[a-f0-9]+)?(')",
+                  lambda m: m[1] + m[2] + '?v=' + version(str((viewer.parent / m[2]).resolve().relative_to(ROOT))) + m[3], text)
+    viewer.write_text(text)
+
 # Theme.render() replaces the initial stylesheet link, so version that URL too.
 for path in (ROOT / 'site/themes').glob('*.js'):
     text = path.read_text()
