@@ -80,7 +80,7 @@ window.PORTFOLIO = {
       "category": "Firmware / RTOS / Robotics",
       "id": "rtos-kernel",
       "details": [
-        "Shared three LiDAR and two IR sensor readings over CAN to guide gap-following and PID steering.",
+        "Exchanged sensor data between the two microcontrollers over CAN for real-time steering and motor control.",
         "Combined PWM motor and servo control with soft-start ramping, bumper-triggered recovery, and Wi-Fi race start/stop commands."
       ],
       "images": [
