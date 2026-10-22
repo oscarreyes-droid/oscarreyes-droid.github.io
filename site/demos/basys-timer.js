@@ -2,14 +2,15 @@
 (function () {
   'use strict';
   const Timer = window.BasysTimer;
-  const polygons = ['10,4 44,4 49,9 44,14 10,14 5,9', '45,16 50,11 54,16 50,43 45,48 41,43',
-    '44,53 49,48 53,53 49,84 44,89 40,84', '8,86 41,86 46,91 41,96 8,96 3,91',
-    '3,53 8,48 12,53 8,84 3,89 0,84', '5,16 10,11 14,16 10,43 5,48 1,43', '10,45 42,45 47,50 42,55 10,55 5,50'];
+  // Symmetric, straight seven-segment geometry with consistent gaps and thickness.
+  const polygons = ['12,6 44,6 50,12 44,18 12,18 6,12', '46,20 52,14 58,20 58,45 52,51 46,45',
+    '46,61 52,55 58,61 58,86 52,92 46,86', '12,88 44,88 50,94 44,100 12,100 6,94',
+    '0,61 6,55 12,61 12,86 6,92 0,86', '0,20 6,14 12,20 12,45 6,51 0,45', '12,47 44,47 50,53 44,59 12,59 6,53'];
   let dispose = function () {};
   function render() {
-    const digits = [0, 1, 2, 3].map(i => '<svg viewBox="0 0 63 102" class="basys-digit" aria-hidden="true">' +
+    const digits = [0, 1, 2, 3].map(i => '<svg viewBox="-2 0 72 108" class="basys-digit" aria-hidden="true">' +
       polygons.map((points, segment) => '<polygon points="' + points + '" data-segment="' + segment + '"/>').join('') +
-      (i === 1 ? '<circle class="decimal on" cx="59" cy="91" r="3"/>' : '') + '</svg>').join('');
+      '<circle class="decimal' + (i === 1 ? ' on' : '') + '" cx="64" cy="94" r="3"/>' + '</svg>').join('');
     const switches = Array.from({ length: 16 }, (_, n) => 15 - n).map(n => {
       const used = n < 2 || n >= 8;
       const purpose = n < 2 ? 'mode bit ' + n : n >= 12 ? 'preset tens bit ' + (n - 12) : n >= 8 ? 'preset ones bit ' + (n - 8) : 'not connected';
@@ -22,7 +23,7 @@
       '<label>Demo speed<select data-speed><option value="1">1× · original clock</option><option value="10">10× · fast forward</option><option value="100">100× · fast forward</option></select></label></div>' +
       '<p class="basys-feedback" data-feedback aria-live="polite">Mode 00: count up from zero. Press Start/stop.</p>' +
       '<div class="basys-board-scroll" tabindex="0" role="region" aria-label="Interactive board; scroll sideways on small screens"><div class="basys-board" aria-label="Stylized Basys3 FPGA board">' +
-      '<div class="board-connectors" aria-hidden="true"><span>PMOD JA</span><span>USB / JTAG</span><span>VGA</span></div><div class="board-brand"><strong>BASYS 3</strong><span>ARTIX-7 FPGA · TIMER LAB</span></div>' +
+      '<div class="board-connectors" aria-hidden="true"><span class="connector-power">POWER</span><span class="connector-jtag">MICRO USB / JTAG</span><span class="connector-vga">VGA</span><span class="connector-usb">USB HOST</span></div><div class="pmod-headers" aria-hidden="true"><span>JA</span><span>JB</span><span>JC</span><span>JXADC</span></div><span class="board-mount bottom-left" aria-hidden="true"></span><span class="board-mount bottom-right" aria-hidden="true"></span><div class="board-brand"><strong>BASYS 3</strong><span>DIGILENT · ARTIX-7 FPGA</span></div>' +
       '<div class="board-body"><div class="board-left"><span class="board-silkscreen">FOUR-DIGIT SEVEN-SEGMENT DISPLAY</span><div class="basys-display" role="img" aria-label="Timer display 00.00">' + digits + '</div><span class="board-silkscreen display-unit">SECONDS . HUNDREDTHS</span></div>' +
       '<div class="fpga-chip" aria-hidden="true"><span>ARTIX-7</span><strong>XC7A35T</strong><small>LOGIC / CONTROL</small></div>' +
       '<div class="board-buttons"><button type="button" class="board-button start-button" data-start aria-label="BTNU Start or stop timer"><small>BTNU</small>Start/stop</button><span class="unused-button button-left" aria-hidden="true"></span><button type="button" class="board-button reset-button" data-reset aria-label="BTNC Reset timer"><small>BTNC</small>Reset</button><span class="unused-button button-right" aria-hidden="true"></span><span class="unused-button button-down" aria-hidden="true"></span></div></div>' +
