@@ -1,7 +1,7 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.terminal = {
   label: "Terminal",
-  css: "site/themes/terminal.css",
+  css: "site/themes/terminal.css?v=36a7f05d7925",
   render: function (d, h) {
     var e = h.esc;
     var links = h.list(d.links).map(function (l) {

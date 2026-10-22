@@ -68,3 +68,9 @@ Use `PLAYWRIGHT_MODULE` for a nonstandard module installation,
 server address. The browser checks exercise all four modes, preset loading,
 start/pause/resume, reset, both limits, invalid BCD, raw switches, close/reopen,
 keyboard controls, and desktop/tablet/phone layout.
+
+## Refreshing cached assets
+
+After changing scripts or styles, run `python3 scripts/version-assets.py`. This
+updates content-hashed resource URLs in the HTML and theme stylesheet mappings.
+The site still runs without a build step.

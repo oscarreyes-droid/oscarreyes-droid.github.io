@@ -1,7 +1,7 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.story = {
   label: "Story",
-  css: "site/themes/story.css",
+  css: "site/themes/story.css?v=3545e2784731",
   render: function (d, h) {
     var e = h.esc;
     var chips = [d.status ? '<span class="chip now">' + e(d.status) + "</span>" : "", d.location ? '<span class="chip">' + e(d.location) + "</span>" : "", d.school ? '<span class="chip">' + e(d.school) + "</span>" : ""].join("");
