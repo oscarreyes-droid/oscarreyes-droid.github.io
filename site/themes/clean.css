@@ -679,3 +679,28 @@ body { background:radial-gradient(ellipse at 85% 0%, #54bfff0c, transparent 38%)
 .project-gallery img { display:block; width:100%; height:auto; aspect-ratio:4 / 3; object-fit:contain; }
 .project-gallery figcaption { color:var(--muted); font-size:12px; line-height:1.6; margin-top:9px; }
 @media(max-width:700px) { .project-gallery { grid-template-columns:1fr; gap:16px; } }
+
+.project-bottom { align-items:center; flex-wrap:wrap; }
+.project-bottom .report-button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  min-height:58px;
+  padding:15px 26px;
+  border:1px solid var(--accent);
+  border-radius:7px;
+  background:var(--accent);
+  color:var(--bg);
+  font:600 17px/1.4 var(--sans);
+  text-decoration:none;
+  box-shadow:0 0 20px #8ad9ff20;
+  transition:background .2s, box-shadow .2s;
+}
+.project-bottom .report-button:hover {
+  background:#c3eeff;
+  box-shadow:0 0 26px #8ad9ff40;
+}
+@media(max-width:700px) {
+  .project-bottom .report-button { width:100%; margin-top:8px; }
+}
