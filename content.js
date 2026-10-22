@@ -121,7 +121,19 @@ window.PORTFOLIO = {
       "result": "Explored subband reconstruction and signal-fidelity tradeoffs with Carlos Rojas and Emmanuel Ramirez.",
       "url": "documents/fir-filter-bank.pdf",
       "category": "Signals / Audio",
-      "id": "fir-filter-bank"
+      "id": "fir-filter-bank",
+      "images": [
+        {
+          "src": "images/signals/fir-filter-responses.png",
+          "alt": "MATLAB magnitude-response plot with complementary blue lowpass and red highpass filter curves.",
+          "caption": "Lowpass and highpass analysis filters split the signal by frequency. From the team report, page 5."
+        },
+        {
+          "src": "images/signals/fir-octave-spectrogram.png",
+          "alt": "Blue and yellow spectrogram titled 3-line Octave Branch, with frequency plotted against time and a power-density color scale.",
+          "caption": "An octave-branch spectrogram visualizes how signal energy changes over time. From the team report, page 7."
+        }
+      ]
     },
     {
       "name": "Space Invaders on a Microcontroller",
@@ -163,7 +175,19 @@ window.PORTFOLIO = {
       "result": "Compared reconstruction fidelity and quantization effects with Carlos Rojas and Emmanuel Ramirez.",
       "url": "documents/audio-image-synthesis.pdf",
       "category": "Signals / Representation",
-      "id": "audio-image-synthesis"
+      "id": "audio-image-synthesis",
+      "images": [
+        {
+          "src": "images/signals/audio-encoded-image.png",
+          "alt": "RGB image encoding the real and imaginary components of the audio signal’s short-time Fourier transform.",
+          "caption": "Sound represented as pixels: companded Fourier coefficients encoded into an RGB image. From the team report, page 5."
+        },
+        {
+          "src": "images/signals/audio-reconstruction.png",
+          "alt": "Overlaid waveform plot comparing original audio in blue with audio reconstructed from its image representation in dashed red.",
+          "caption": "Original versus reconstructed audio over 28 seconds, showing the effect of the image round trip. From the team report, page 7."
+        }
+      ]
     }
   ],
   "skills": [
