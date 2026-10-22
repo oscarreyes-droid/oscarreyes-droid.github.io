@@ -29,13 +29,19 @@ window.THEMES.clean = {
       '<path d="M365 96l8 6-8 6 M735 96l8 6-8 6 M365 266l8 6-8 6 M735 266l8 6-8 6"/>' +
       '</g><g class="board-labels" aria-hidden="true"><text x="62" y="22">U1 / COMPUTE</text><text x="432" y="22">U2 / FIRMWARE</text><text x="802" y="22">U3 / CONTROL</text><text x="62" y="211">U4 / SIGNALS</text><text x="432" y="211">U5 / TRANSFORM</text><text x="802" y="211">U6 / INTERFACE</text><text x="330" y="183">DATA →</text><text x="700" y="183">CLOCK →</text></g>' +
       circuitNode('lc3b-processor', 60, 55, 'LC-3b PROCESSOR', 'ASSEMBLER / PIPELINE') +
-      circuitNode('rtos-kernel', 430, 55, 'RTOS KERNEL', 'C / ARM / SCHEDULING') +
+      circuitNode('rtos-kernel', 430, 55, 'RTOS / RACING ROBOT', 'C / ARM / CONTROL') +
       circuitNode('fpga-timer', 800, 55, 'FPGA TIMER', 'VERILOG / CONTROL') +
       circuitNode('fir-filter-bank', 60, 225, 'FIR FILTER BANK', 'MATLAB / MULTIRATE DSP') +
       circuitNode('audio-image-synthesis', 430, 225, 'AUDIO ↔ IMAGE', 'FFT / SIGNAL SYNTHESIS') +
       circuitNode('space-invaders', 800, 225, 'SPACE INVADERS', 'MCU / AUDIO / DISPLAY') + '</svg>';
-    var projects = h.list(d.projects).map(function(p,i){
-      return '<article class="project" id="project-'+e(p.id)+'" tabindex="-1"><div class="project-top"><span class="number">0'+(i+1)+'</span><span>'+e(p.category)+'</span></div><h3>'+e(p.name)+'</h3><p>'+e(p.summary)+'</p><p class="result">'+e(p.result)+'</p>'+tags(p.stack)+'<div class="project-bottom"><span>'+e(p.when)+'</span>'+(p.url?'<a href="'+h.url(p.url)+'">Read team report <span aria-hidden="true">→</span></a>':'')+'</div></article>';
+    var projects = h.list(d.projects).map(function (p, i) {
+      var photos = h.list(p.images).map(function (photo) {
+        return '<figure><a href="' + h.url(photo.src) + '" aria-label="Open full-size image: ' + e(photo.alt) + '"><img src="' + h.url(photo.src) + '" alt="' + e(photo.alt) + '" loading="lazy" width="800" height="600"></a>' +
+          (photo.caption ? '<figcaption>' + e(photo.caption) + '</figcaption>' : '') + '</figure>';
+      }).join('');
+      var gallery = photos ? '<div class="project-gallery">' + photos + '</div>' : '';
+      var details = h.list(p.details).length ? '<ul class="project-details">' + p.details.map(function (detail) { return '<li>' + e(detail) + '</li>'; }).join('') + '</ul>' : '';
+      return '<article class="project' + (photos ? ' project-with-photos' : '') + '" id="project-' + e(p.id) + '" tabindex="-1"><div class="project-top"><span class="number">0' + (i + 1) + '</span><span>' + e(p.category) + '</span></div><h3>' + e(p.name) + '</h3>' + gallery + '<p>' + e(p.summary) + '</p>' + details + '<p class="result">' + e(p.result) + '</p>' + tags(p.stack) + '<div class="project-bottom"><span>' + e(p.when) + '</span>' + (p.url ? '<a href="' + h.url(p.url) + '">Read team report <span aria-hidden="true">→</span></a>' : '') + '</div></article>';
     }).join('');
     var xp = h.list(d.experience).map(function (j) {
       var logo = j.logo ? '<img class="job-logo" src="' + h.url(j.logo) + '" alt="" width="64" height="64" loading="lazy">' : '';

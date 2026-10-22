@@ -64,18 +64,25 @@ window.PORTFOLIO = {
   ],
   "projects": [
     {
-      "name": "Real-Time Operating System Kernel",
-      "when": "Spring 2026",
+      "name": "RTOS Kernel & Autonomous Racing Robot",
+      "when": "Spring 2026 · Team project",
       "stack": [
         "C",
         "ARM Assembly",
-        "MSPM0G3507"
+        "MSPM0G3507",
+        "RTOS",
+        "CAN",
+        "PID control"
       ],
-      "summary": "Built a real-time kernel with priority-based scheduling, thread synchronization, and critical-section control for shared resources.",
-      "result": "Validated timing with GPIO profiling of context-switch overhead, latency, and jitter.",
+      "summary": "Developed the real-time kernel used in a team-built autonomous racing robot. Priority-based scheduling, synchronization, and critical-section control supported a system built around two MSPM0G3507 microcontrollers.",
+      "result": "Profiled kernel timing with GPIO measurements. Team robot measurements: approximately 45 cm/s speed and ±7° turning accuracy on a 90° turn.",
       "url": "",
-      "category": "Firmware / Real-time",
-      "id": "rtos-kernel"
+      "category": "Firmware / RTOS / Robotics",
+      "id": "rtos-kernel",
+      "details": [
+        "Shared three LiDAR and two IR sensor readings over CAN to guide gap-following and PID steering.",
+        "Combined PWM motor and servo control with soft-start ramping, bumper-triggered recovery, and Wi-Fi race start/stop commands."
+      ]
     },
     {
       "name": "LC-3b Processor & Simulator",
