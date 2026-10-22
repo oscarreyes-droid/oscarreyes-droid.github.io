@@ -80,7 +80,7 @@ window.PORTFOLIO = {
       "category": "Firmware / RTOS / Robotics",
       "id": "rtos-kernel",
       "details": [
-        "Exchanged sensor data between the two microcontrollers over CAN for real-time steering and motor control.",
+        "Used IR and TF-Luna distance sensors, with measurements shared between the two microcontrollers over CAN for real-time steering and motor control.",
         "Combined PWM motor and servo control with soft-start ramping, bumper-triggered recovery, and Wi-Fi race start/stop commands."
       ],
       "images": [
