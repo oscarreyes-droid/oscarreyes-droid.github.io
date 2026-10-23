@@ -9,8 +9,8 @@ locally under their MIT license.
 
 ## Behavior and source mapping
 
-The behavior comes from the Verilog and XDC in
-`Lab6_OscarReyes_ZoeGonzalez.zip`, supplied by Oscar Reyes:
+The behavior comes from the Verilog and XDC in the Lab 6 project archive
+supplied by Oscar Reyes:
 
 - `stateMachine.v`: eight controller states, old-state counter actions, BCD
   carries/borrows, presets, and saturation at 00.00 or 99.99.

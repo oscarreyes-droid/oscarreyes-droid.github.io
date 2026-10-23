@@ -1,5 +1,5 @@
-/* Behavioral port of stateMachine.v and button_edge.v from Oscar Reyes and
-   Zoe Gonzalez's Lab 6. One step is one rising edge of clkdiv2's COUNT[19].
+/* Behavioral port of stateMachine.v and button_edge.v from the supplied
+   Lab 6 project. One step is one rising edge of clkdiv2's COUNT[19].
    No synthesis, analog effects, or display-scan flicker are simulated. */
 (function (root) {
   'use strict';

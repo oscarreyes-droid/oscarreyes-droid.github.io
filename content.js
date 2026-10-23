@@ -151,14 +151,14 @@ window.PORTFOLIO = {
     },
     {
       "name": "Programmable Stopwatch & Timer",
-      "when": "Spring 2025 · Team project",
+      "when": "Spring 2025",
       "stack": [
         "Verilog",
         "Basys3 FPGA",
         "Digital logic"
       ],
       "summary": "Designed a custom datapath and finite-state controller supporting four watch and timer modes, with live I/O and seven-segment displays.",
-      "result": "Developed with Zoe Gonzalez. Verified timing and mode switching through simulation and hardware testing.",
+      "result": "Verified timing and mode switching through simulation and hardware testing.",
       "url": "",
       "category": "Digital logic / FPGA",
       "id": "fpga-timer",
