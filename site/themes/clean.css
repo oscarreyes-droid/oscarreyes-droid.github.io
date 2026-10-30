@@ -704,3 +704,7 @@ body { background:radial-gradient(ellipse at 85% 0%, #54bfff0c, transparent 38%)
 @media(max-width:700px) {
   .project-bottom .report-button { width:100%; margin-top:8px; }
 }
+
+/* Keep single project photos and diagrams readable without cropping. */
+.project-gallery > figure:only-child { grid-column:1 / -1; }
+.project-gallery > figure:only-child img { aspect-ratio:auto; max-height:560px; object-fit:contain; }

@@ -107,7 +107,14 @@ window.PORTFOLIO = {
       "result": "Implemented microcode, interrupts, address translation, caches, dependency detection, and stalls.",
       "url": "",
       "category": "Architecture / Simulation",
-      "id": "lc3b-processor"
+      "id": "lc3b-processor",
+      "images": [
+        {
+          "src": "architecture.jpg",
+          "alt": "LC-3b datapath diagram showing the register file, ALU, control signals, shared bus, memory, and input/output registers.",
+          "caption": "LC-3b datapath: the register file, ALU, memory, and control signals modeled by the simulator. Click to view the full-size diagram."
+        }
+      ]
     },
     {
       "name": "Multirate FIR Filter Bank",
@@ -147,7 +154,14 @@ window.PORTFOLIO = {
       "result": "Integrated a 12-bit DAC for audio, an ADC-driven slide potentiometer, and a TFT LCD.",
       "url": "",
       "category": "Firmware / Interactive",
-      "id": "space-invaders"
+      "id": "space-invaders",
+      "images": [
+        {
+          "src": "IMG_2191.jpg",
+          "alt": "Space Invaders running on a breadboard-connected TFT LCD, with rows of enemies and the player ship visible on screen.",
+          "caption": "Space Invaders running on the embedded hardware, with the game rendered on the TFT LCD."
+        }
+      ]
     },
     {
       "name": "Programmable Stopwatch & Timer",

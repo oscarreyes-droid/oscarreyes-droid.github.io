@@ -1,6 +1,6 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.clean = {
-  label: "Clean", css: "site/themes/clean.css?v=51c5aa9703ec",
+  label: "Clean", css: "site/themes/clean.css?v=3029e6651d3c",
   render: function (d, h) {
     var e = h.esc;
     var headline = e(d.headline).replace(/\bFIRMWARE\b/, "<strong><em>FIRMWARE</em></strong>");
