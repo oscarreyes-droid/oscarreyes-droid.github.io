@@ -1,49 +1,48 @@
-# Personal Portfolio Workshop · SHPE UT Austin
+# Oscar Reyes | Firmware & Embedded Systems
 
-Build and publish your own portfolio site in one night. You fill in **one file**, pick a style, and it goes live at `yourusername.github.io`.
+**Bringing circuits to life with _FIRMWARE_.**
 
-## 1. Make your copy
-1. Click **Use this template → Create a new repository** (top right of this page).
-2. Name it exactly **`yourusername.github.io`** (your real GitHub username) and set it to **Public**.
+I'm an Electrical and Computer Engineering student at The University of Texas at Austin, graduating May 2027. My interests center on firmware, real-time systems, and computer architecture.
 
-## 2. Open it in Codespaces
-1. In your new repo, click **Code → Codespaces → Create codespace on main**.
-2. Wait about a minute. VS Code opens in your browser with `content.js` already open, and a preview of your site opens on the side.
-   - No preview? Open the **Ports** tab at the bottom and click the globe icon next to port 8000.
+**[Explore my portfolio →](https://oscarreyes-droid.github.io/)**
 
-## 3. Fill in `content.js`
-- Replace the sample text with your own, keeping the quotes and commas.
-- Save (Ctrl/Cmd + S) and refresh the preview to see your changes.
-- Stuck on what to write? Paste a resume bullet into Claude or ChatGPT and ask:
-  > Ask me 3 questions about this, then write a 2-sentence project description for my portfolio. Make it sound like a student, not a press release.
-- Something broke? The preview goes blank when a quote or comma is missing. Paste `content.js` into Claude or ChatGPT and ask it to find the mistake.
+[Resume](resume.pdf) · [LinkedIn](https://www.linkedin.com/in/oscarreyes19/) · [Email](mailto:oscarreyes@utexas.edu)
 
-## 4. Pick your style
-Use the **Style** switcher in the bottom-right corner to try **Terminal**, **Clean**, and **Story**. When you've picked one:
-```js
-theme: "story",
-showThemePicker: false,
+## Featured projects
+
+| Project | Focus |
+| --- | --- |
+| [RTOS Kernel & Autonomous Racing Robot](https://oscarreyes-droid.github.io/#project-rtos-kernel) | Real-time scheduling, synchronization, and microcontroller integration for autonomous racing. |
+| [LC-3b Processor & Simulator](https://oscarreyes-droid.github.io/#project-lc3b-processor) | Two-pass assembler, instruction-level simulation, microarchitecture, and a five-stage pipeline. |
+| [Programmable Stopwatch & Timer](https://oscarreyes-droid.github.io/#project-fpga-timer) | Verilog datapath and controller for a Basys3 FPGA, with an interactive 3D board demo. |
+| [Space Invaders](https://oscarreyes-droid.github.io/#project-space-invaders) | Embedded game combining graphics, audio, and physical controls. |
+| [Multirate FIR Filter Bank](https://oscarreyes-droid.github.io/#project-fir-filter-bank) | Audio subband analysis and reconstruction in MATLAB. |
+| [Audio & Image Signal Processing](https://oscarreyes-droid.github.io/#project-audio-image-synthesis) | Signal synthesis and reconstruction, illustrated with report figures. |
+
+The portfolio includes hardware photos, architecture diagrams, signal-processing plots, and selected project reports.
+
+## Website
+
+Built with HTML, CSS, and JavaScript and hosted on GitHub Pages. The interactive Basys3 demo uses Three.js, a CAD-based board model, and a browser simulation of the timer's Verilog logic. It runs entirely in the browser.
+
+### Local preview
+
+From the repository folder, run:
+
+```sh
+python3 -m http.server 8000
 ```
 
-## 5. Publish
-1. Click the **Source Control** icon on the left (the branch symbol), type a message like `my portfolio`, then click **Commit** and **Sync Changes**.
-2. On GitHub, go to **Settings → Pages**, set the source to **Deploy from a branch → main → / (root)**, and click **Save**.
-3. Wait 1–2 minutes, then open **`https://yourusername.github.io`**. You're live!
+Open [localhost:8000](http://localhost:8000). No build step is required.
 
-Page not loading? Check that your repo name exactly matches your username and that the repo is public.
+### Structure
 
-## Optional extras
-- **Photo:** upload `headshot.jpg` into `images/` and set `photo: "images/headshot.jpg"`.
-- **Resume:** upload your resume as `resume.pdf` in the main folder.
-- **Colors:** each style's colors are at the top of its file in `site/themes/` (look for `--accent`).
-- **Done for the night?** Stop your Codespace (Code → Codespaces → … → Stop) so it doesn't use your free hours.
+- `content.js` — biography, experience, projects, and image captions.
+- `site/themes/clean.js` and `clean.css` — active layout and styling.
+- `site/demos/` — interactive Basys3 timer and simulation logic.
+- `models/` — board model and related assets.
+- `images/` and `documents/` — project visuals and selected reports.
 
-## What's in here
-```
-content.js          ← your info (the only file you need to edit)
-index.html          ← the page shell
-site/app.js         ← puts your content into the chosen style
-site/themes/        ← terminal, clean, and story styles
-images/             ← your photos
-.devcontainer/      ← sets up Codespaces and the live preview
-```
+After editing versioned website assets, run `python3 scripts/version-assets.py` to refresh their cache identifiers. Changes pushed to `main` deploy through GitHub Pages.
+
+Adapted from the SHPE UT Austin portfolio workshop template.
