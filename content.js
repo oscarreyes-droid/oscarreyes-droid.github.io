@@ -5,7 +5,7 @@ window.PORTFOLIO = {
   "name": "Oscar Reyes",
   "initials": "OR",
   "photo": "",
-  "headline": "Bringing circuits to life with FIRMWARE",
+  "headline": "Bringing systems to life with FIRMWARE",
   "tagline": "",
   "school": "Electrical & Computer Engineering · UT Austin · May 2027",
   "location": "Austin, TX",

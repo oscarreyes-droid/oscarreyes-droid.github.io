@@ -9,7 +9,7 @@ There is no package installation or build step. Preview with
 ## Design and content
 
 - Preserve the black and light-blue theme and firmware focus.
-- The headline is “Bringing circuits to life with FIRMWARE”; FIRMWARE is bold,
+- The headline is “Bringing systems to life with FIRMWARE”; FIRMWARE is bold,
   italic, and uppercase in the rendered headline.
 - The circuit diagram links to the project cards.
 - Keep project visuals uncropped and accessible, with descriptive alt text.

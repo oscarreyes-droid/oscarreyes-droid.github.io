@@ -1,6 +1,6 @@
 # Oscar Reyes | Firmware & Embedded Systems
 
-**Bringing circuits to life with _FIRMWARE_.**
+**Bringing systems to life with _FIRMWARE_.**
 
 I'm an Electrical and Computer Engineering student at The University of Texas at Austin, graduating May 2027. My interests center on firmware, real-time systems, and computer architecture.
 

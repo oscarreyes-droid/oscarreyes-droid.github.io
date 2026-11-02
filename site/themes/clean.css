@@ -69,6 +69,13 @@ nav {
   font-size:14px;
   color:var(--muted)
 }
+nav > a:not(.nav-resume):hover,
+nav > a:not(.nav-resume):focus-visible {
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+}
 .nav-resume {
   color:var(--ink);
   border:1px solid var(--line);
@@ -173,7 +180,38 @@ nav {
   background:var(--surface);
   transform:rotate(2deg)
 }
-.system-bar,.system-footer {
+.system-bar,.system-.contact-links .contact-button {
+  min-height:48px;
+  box-sizing:border-box;
+  gap:12px;
+  font-weight:600;
+  transition:background .2s, border-color .2s;
+}
+.contact-icon {
+  width:24px;
+  height:24px;
+  flex-shrink:0;
+}
+.contact-arrow { margin-left:8px; }
+.contact-links .contact-button--linkedin {
+  background:#0a66c2;
+  border-color:#0a66c2;
+  color:#fff;
+}
+.contact-links .contact-button--linkedin:hover {
+  background:#0856a3;
+  border-color:#78b7f5;
+}
+.contact-links .contact-button--github {
+  background:#a83232;
+  border-color:#c84a4a;
+  color:#fff;
+}
+.contact-links .contact-button--github:hover {
+  background:#892828;
+  border-color:#f19b9b;
+}
+footer {
   display:flex;
   justify-content:space-between;
   align-items:center;

@@ -1,6 +1,6 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.clean = {
-  label: "Clean", css: "site/themes/clean.css?v=3029e6651d3c",
+  label: "Clean", css: "site/themes/clean.css?v=a39582793f90",
   render: function (d, h) {
     var e = h.esc;
     var headline = e(d.headline).replace(/\bFIRMWARE\b/, "<strong><em>FIRMWARE</em></strong>");
@@ -49,7 +49,18 @@ window.THEMES.clean = {
       return '<article class="job"><div class="job-heading">' + logo + '<div><p class="eyebrow">' + e(j.dates) + '</p><h3>' + e(j.role) + '</h3><p class="organization">' + e(j.org) + '</p></div></div><div><p>' + e(j.summary) + '</p>' + tags(j.tags) + '</div></article>';
     }).join('');
     var skills=h.list(d.skills).map(function(s){return '<div class="skill-group"><h3>'+e(s.group)+'</h3>'+tags(s.items)+'</div>';}).join('');
-    var links=h.list(d.links).map(function(l){return '<a class="button" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+e(l.label)+' <span aria-hidden="true">→</span></a>';}).join('');
+    function contactIcon(kind) {
+      var paths = {
+        linkedin: '<path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.46 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.29 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.3h.04c.4-.75 1.36-1.55 2.79-1.55 2.99 0 3.58 1.97 3.58 4.53v5.27Z"/>',
+        github: '<path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.57 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16A10.8 10.8 0 0 1 12 6.16c.96 0 1.92.13 2.82.38 2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.33-2.63 5.28-5.14 5.56.4.35.76 1.03.76 2.08v3.1c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"/>',
+        resume: '<path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6Zm0 0v6h6M8 13h8m-8 4h6"/>'
+      };
+      return paths[kind] ? '<svg class="contact-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">'+paths[kind]+'</svg>' : '';
+    }
+    var links=h.list(d.links).map(function(l){
+      var kind = /^https?:\/\/(www\.)?linkedin\.com(?:\/|$)/i.test(l.url) ? 'linkedin' : /^https?:\/\/(www\.)?github\.com(?:\/|$)/i.test(l.url) ? 'github' : '';
+      return '<a class="button contact-button'+(kind ? ' contact-button--'+kind : '')+'" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+contactIcon(kind)+'<span>'+e(l.label)+'</span><span class="contact-arrow" aria-hidden="true">↗</span></a>';
+    }).join('');
     return '<a class="skip" href="#main">Skip to content</a><div class="wrap"><header><a class="identity" href="#"><span class="monogram">OR<span>_</span></span><span>'+e(d.name)+'</span></a><nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="nav-resume" href="'+h.url(d.resume)+'">Resume →</a></nav></header>'+
     '<main id="main"><section class="hero"><div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> Electrical & Computer Engineering / UT Austin</p><h1>'+headline+'</h1>'+(d.tagline ? '<p class="hero-tagline">'+e(d.tagline)+'</p>' : '')+'<p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="'+h.url(d.resume)+'">View resume →</a></div><p class="hero-note">Austin, TX <span> / </span> Graduating May 2027</p></div>'+
     '<aside class="system" aria-label="Interactive project circuit"><div class="system-bar"><span>OSCAR / PROJECT CIRCUIT</span><span class="status-dot"></span></div><div class="circuit-viewport" tabindex="0" role="region" aria-label="Project circuit; scroll horizontally on small screens">'+circuit+'</div><div class="system-footer"><span>SELECT A COMPONENT TO EXPLORE <span class="circuit-scroll-hint"> / SWIPE →</span></span><span>06 PROJECTS</span></div></aside></section>'+
@@ -58,6 +69,6 @@ window.THEMES.clean = {
     '<section id="experience"><div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2>Technical work. Human impact.</h2></div></div><div class="experience">'+xp+'</div></section>'+
     '<section id="toolkit"><div class="section-heading"><div><p class="eyebrow">03 / Toolkit</p><h2>What I work with.</h2></div></div><div class="skill-grid">'+skills+'</div></section>'+
     '<section class="education"><div><p class="eyebrow">Education & community</p><h2>The University of Texas at Austin</h2><p>B.S. Electrical & Computer Engineering · May 2027<br>Track: Computer Architecture and Embedded Systems</p><p>Active member of UT SHPE and IEEE since August 2023.<br>English & Spanish · Eligible to work in the U.S. without restrictions.</p></div><div><h3>Recognition</h3><ul>'+h.list(d.awards).map(function(a){return '<li>'+e(a)+'</li>';}).join('')+'</ul></div></section>'+
-    '<section id="contact" class="contact"><p class="eyebrow">04 / Get in touch</p><h2>Let’s build what’s next.</h2><p>I’m pursuing a career writing firmware. If your team builds embedded software, microcontroller applications, or real-time systems, I’d love to connect.</p><a class="contact-email" href="mailto:'+e(d.email)+'">'+e(d.email)+' <span aria-hidden="true">→</span></a><div class="contact-links">'+links+'<a class="button" href="'+h.url(d.resume)+'">View resume →</a></div></section></main><footer><span>© '+new Date().getFullYear()+' '+e(d.name)+'</span><a href="#">Back to top ↑</a></footer></div>';
+    '<section id="contact" class="contact"><p class="eyebrow">04 / Get in touch</p><h2>Let’s build what’s next.</h2><p>I’m pursuing a career writing firmware. If your team builds embedded software, microcontroller applications, or real-time systems, I’d love to connect.</p><a class="contact-email" href="mailto:'+e(d.email)+'">'+e(d.email)+' <span aria-hidden="true">→</span></a><div class="contact-links">'+links+'<a class="button contact-button" href="'+h.url(d.resume)+'">'+contactIcon('resume')+'<span>View resume</span><span class="contact-arrow" aria-hidden="true">→</span></a></div></section></main><footer><span>© '+new Date().getFullYear()+' '+e(d.name)+'</span><a href="#">Back to top ↑</a></footer></div>';
   }
 };
