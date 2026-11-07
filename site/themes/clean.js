@@ -1,6 +1,6 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.clean = {
-  label: "Clean", css: "site/themes/clean.css?v=6ebb2a9441cf",
+  label: "Clean", css: "site/themes/clean.css?v=e662f1b1a0a0",
   mount: function () {
     var board = document.querySelector('.system');
     if (!board) return;
@@ -89,7 +89,7 @@ window.THEMES.clean = {
     '<section id="work"><div class="section-heading"><div><p class="eyebrow">01 / Selected projects</p><h2>Ideas, implemented.</h2></div><p>Real-time kernels, processor pipelines,<br>and signals made tangible.</p></div><div class="projects">'+projects+'</div></section>'+
     '<section id="experience"><div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2>Technical work. Human impact.</h2></div></div><div class="experience">'+xp+'</div></section>'+
     '<section id="toolkit"><div class="section-heading"><div><p class="eyebrow">03 / Toolkit</p><h2>What I work with.</h2></div></div><div class="skill-grid">'+skills+'</div></section>'+
-    '<section class="education"><div><p class="eyebrow">Education & community</p><h2>The University of Texas at Austin</h2><p>B.S. Electrical & Computer Engineering · May 2027<br>Track: Computer Architecture and Embedded Systems</p><p>Active member of UT SHPE and IEEE since August 2023.<br>English & Spanish · Eligible to work in the U.S. without restrictions.</p></div><div><h3>Recognition</h3><ul>'+h.list(d.awards).map(function(a){return '<li>'+e(a)+'</li>';}).join('')+'</ul></div></section>'+
+    '<section class="education"><div><p class="eyebrow">Education & community</p><h2>The University of Texas at Austin</h2><p>B.S. Electrical & Computer Engineering · May 2027<br>Track: Computer Architecture and Embedded Systems</p><p>Active member of UT SHPE and IEEE since August 2023.<br>English & Spanish · Eligible to work in the U.S. without restrictions.</p></div><div><h3 class="honors-heading">Honors and Awards</h3><ul>'+h.list(d.awards).map(function(a){return '<li>'+e(a)+'</li>';}).join('')+'</ul></div></section>'+
     '<section id="contact" class="contact"><p class="eyebrow">04 / Get in touch</p><h2>Let’s build what’s next.</h2><p>I’m pursuing a career writing firmware. If your team builds embedded software, microcontroller applications, or real-time systems, I’d love to connect.</p><a class="contact-email" href="mailto:'+e(d.email)+'">'+e(d.email)+' <span aria-hidden="true">→</span></a><div class="contact-links">'+links+'<a class="button contact-button" href="'+h.url(d.resume)+'">'+contactIcon('resume')+'<span>View resume</span><span class="contact-arrow" aria-hidden="true">→</span></a></div></section></main><footer><span>© '+new Date().getFullYear()+' '+e(d.name)+'</span><a href="#">Back to top ↑</a></footer></div>';
   }
 };

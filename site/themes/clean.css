@@ -504,7 +504,11 @@ h3 {
   padding-left:18px
 }
 .education li {
+  font-style:italic;
   margin-bottom:6px
+}
+.honors-heading {
+  font-style:italic;
 }
 .contact {
   margin-top:90px;

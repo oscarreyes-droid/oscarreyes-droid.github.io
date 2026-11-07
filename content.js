@@ -10,7 +10,7 @@ window.PORTFOLIO = {
   "school": "Electrical & Computer Engineering · UT Austin · May 2027",
   "location": "Austin, TX",
   "status": "Aspiring firmware engineer · Embedded systems · Computer architecture",
-  "about": "My goal is to write firmware that brings hardware to life. I’m an Electrical and Computer Engineering student at UT Austin, building real-time kernels and microcontroller applications in C and ARM assembly. My work in computer architecture and security operations shapes how I think about reliable systems.",
+  "about": "I’m an Electrical and Computer Engineering student at UT Austin focused on firmware and embedded systems. I work in C and ARM assembly to build real-time kernels and microcontroller applications, with a particular interest in how software interacts with hardware. My experience in computer architecture and security operations informs how I approach system design, debugging, and reliability.",
   "email": "oscarreyes@utexas.edu",
   "resume": "resume.pdf",
   "links": [
