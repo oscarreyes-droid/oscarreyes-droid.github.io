@@ -30,6 +30,11 @@ window.PORTFOLIO = {
       "place": "Austin, TX",
       "dates": "June 2025 – Present",
       "summary": "Performed 30+ security triages using Splunk SIEM logs to investigate threats and suspicious activity. Use CLI tools and Python scripts to identify indicators of compromise and support remediation, alongside web application and network vulnerability assessments.",
+      "bullets": [
+        "Performed 30+ security triages by analyzing Splunk SIEM server logs to detect threats, intrusions, and suspicious activity.",
+        "Leverage CLI techniques and Python scripts to investigate incidents, identify indicators of compromise, and begin remediation.",
+        "Conduct vulnerability assessments on web applications and networks, strengthening incident response and defenses."
+      ],
       "tags": [
         "Splunk",
         "Python",
@@ -43,6 +48,11 @@ window.PORTFOLIO = {
       "place": "Austin, TX",
       "dates": "April 2025 – April 2026",
       "summary": "Mentored four students through academic support, tutoring, and guidance. Participated in training and shared weekly feedback to help improve a program serving 100+ scholars.",
+      "bullets": [
+        "Mentored 4 students as an academic mentor in the Ramshorn Scholars Program, providing support, tutoring, and guidance.",
+        "Attended trainings and provided weekly feedback to managers for the purpose of benefiting 100+ scholars.",
+        "Advocated for greater recognition of the program and its benefits to an undergraduate student."
+      ],
       "tags": [
         "Mentorship",
         "Communication"
@@ -55,6 +65,10 @@ window.PORTFOLIO = {
       "place": "Austin, TX",
       "dates": "October 2024 – May 2025",
       "summary": "Guided 75+ students through digital logic, microarchitecture encoding, and computer architecture. Hosted exam review sessions for ECE 306.",
+      "bullets": [
+        "Guided 75+ students through digital logic design, computer microarchitecture encoding, and computer architecture concepts.",
+        "Hosted review sessions for students before midterm exams in ECE 306, an undergraduate computing course."
+      ],
       "tags": [
         "Computer architecture",
         "Teaching"

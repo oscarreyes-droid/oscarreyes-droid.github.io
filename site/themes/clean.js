@@ -1,6 +1,26 @@
 window.THEMES = window.THEMES || {};
 window.THEMES.clean = {
-  label: "Clean", css: "site/themes/clean.css?v=de78af5095e0",
+  label: "Clean", css: "site/themes/clean.css?v=6ebb2a9441cf",
+  mount: function () {
+    var board = document.querySelector('.system');
+    if (!board) return;
+    var theme = this;
+    var storageKey = 'portfolio:circuit-explored';
+    try {
+      if (sessionStorage.getItem(storageKey) === 'yes') theme.circuitExplored = true;
+    } catch (error) { /* The current page still remembers when storage is unavailable. */ }
+    if (theme.circuitExplored) return;
+    board.classList.add('circuit-inviting');
+    function dismissShine(event) {
+      if (!event.target.closest('.diagram-link')) return;
+      theme.circuitExplored = true;
+      board.classList.remove('circuit-inviting');
+      board.removeEventListener('click', dismissShine);
+      try { sessionStorage.setItem(storageKey, 'yes'); } catch (error) {}
+    }
+    // Native link activation covers pointer, touch, and keyboard input.
+    board.addEventListener('click', dismissShine);
+  },
   render: function (d, h) {
     var e = h.esc;
     var headline = e(d.headline).replace(/\bFIRMWARE\b/, "<strong><em>FIRMWARE</em></strong>");
@@ -46,7 +66,8 @@ window.THEMES.clean = {
     }).join('');
     var xp = h.list(d.experience).map(function (j) {
       var logo = j.logo ? '<img class="job-logo" src="' + h.url(j.logo) + '" alt="" width="64" height="64" loading="lazy">' : '';
-      return '<article class="job"><div class="job-heading">' + logo + '<div><p class="eyebrow">' + e(j.dates) + '</p><h3>' + e(j.role) + '</h3><p class="organization">' + e(j.org) + '</p></div></div><div><p>' + e(j.summary) + '</p>' + tags(j.tags) + '</div></article>';
+      var description = h.list(j.bullets).length ? '<ul class="job-bullets" role="list">' + j.bullets.map(function (bullet) { return '<li>' + e(bullet) + '</li>'; }).join('') + '</ul>' : '<p>' + e(j.summary) + '</p>';
+      return '<article class="job"><div class="job-heading">' + logo + '<div><p class="eyebrow">' + e(j.dates) + '</p><h3>' + e(j.role) + '</h3><p class="organization">' + e(j.org) + '</p></div></div><div>' + description + tags(j.tags) + '</div></article>';
     }).join('');
     var skills=h.list(d.skills).map(function(s){return '<div class="skill-group"><h3>'+e(s.group)+'</h3>'+tags(s.items)+'</div>';}).join('');
     function contactIcon(kind) {
@@ -62,8 +83,8 @@ window.THEMES.clean = {
       return '<a class="button contact-button'+(kind ? ' contact-button--'+kind : '')+'" href="'+h.url(l.url)+'"'+h.ext(l.url)+'>'+contactIcon(kind)+'<span>'+e(l.label)+'</span><span class="contact-arrow" aria-hidden="true">↗</span></a>';
     }).join('');
     return '<a class="skip" href="#main">Skip to content</a><div class="wrap"><header><a class="identity" href="#" aria-label="'+e(d.name)+' home"><span class="brand-wordmark">'+e(d.name)+'<span class="brand-divider" aria-hidden="true"> /</span></span></a><nav aria-label="Main navigation"><a href="#work">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a><a class="nav-resume" href="'+h.url(d.resume)+'">Resume →</a></nav></header>'+
-    '<main id="main"><section class="hero"><div class="hero-copy"><p class="education-label"><span class="education-university">The University of Texas at Austin</span><span class="education-discipline">Electrical &amp; Computer Engineering</span></p><h1>'+headline+'</h1>'+(d.tagline ? '<p class="hero-tagline">'+e(d.tagline)+'</p>' : '')+'<p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="'+h.url(d.resume)+'">View resume →</a></div><p class="hero-note">Austin, TX <span aria-hidden="true">·</span> Graduating May 2027</p></div>'+
-    '<aside class="system" aria-label="Interactive project circuit"><div class="system-bar"><span>Project circuit</span></div><div class="circuit-viewport" tabindex="0" role="region" aria-label="Project circuit; scroll horizontally on small screens">'+circuit+'</div><div class="system-footer"><span>Select a project to explore <span class="circuit-scroll-hint"> / Swipe →</span></span><span>'+h.list(d.projects).length+' projects</span></div></aside></section>'+
+    '<main id="main"><section class="hero"><div class="hero-copy"><p class="education-label"><span class="education-university">The University of Texas at Austin</span><span class="education-discipline">Electrical &amp; Computer Engineering</span></p><h1>'+headline+'</h1>'+(d.tagline ? '<p class="hero-tagline">'+e(d.tagline)+'</p>' : '')+'<p class="intro">'+e(d.about)+'</p><div class="hero-actions"><a class="button primary" href="'+h.url(d.resume)+'">View resume <span aria-hidden="true">→</span></a></div><p class="hero-note">Austin, TX <span aria-hidden="true">·</span> Graduating May 2027</p></div>'+
+    '<div class="circuit-guide-block"><div class="circuit-guide"><span class="circuit-guide-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></span><div><h2>Explore my projects</h2><p id="circuit-guide-description">Select any circuit component below to jump to its project.<span class="circuit-guide-mobile"> Swipe sideways to see more components.</span></p></div></div><aside class="system" aria-label="Interactive project circuit" aria-describedby="circuit-guide-description"><div class="system-bar"><span>Project circuit</span></div><div class="circuit-viewport" tabindex="0" role="region" aria-label="Project circuit; scroll horizontally on small screens">'+circuit+'</div><div class="system-footer"><span>Select a project to explore <span class="circuit-scroll-hint"> / Swipe →</span></span><span>'+h.list(d.projects).length+' projects</span></div></aside></div></section>'+
     '<div class="highlights" aria-label="Experience highlights"><div><strong>30+</strong><span>security triages performed</span></div><div><strong>75+</strong><span>students tutored in computing</span></div><div><strong>HW ↔ SW</strong><span>architecture to implementation</span></div></div>'+
     '<section id="work"><div class="section-heading"><div><p class="eyebrow">01 / Selected projects</p><h2>Ideas, implemented.</h2></div><p>Real-time kernels, processor pipelines,<br>and signals made tangible.</p></div><div class="projects">'+projects+'</div></section>'+
     '<section id="experience"><div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2>Technical work. Human impact.</h2></div></div><div class="experience">'+xp+'</div></section>'+

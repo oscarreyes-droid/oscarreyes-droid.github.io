@@ -450,6 +450,26 @@ h3 {
   color:var(--muted);
   margin:0 0 18px
 }
+.job-bullets {
+  margin:0 0 18px;
+  padding-left:0;
+  list-style:none;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.75;
+}
+.job-bullets li {
+  position:relative;
+  padding-left:22px;
+}
+.job-bullets li + li { margin-top:10px; }
+.job-bullets li::before {
+  content:"\2192";
+  position:absolute;
+  left:0;
+  top:0;
+  color:var(--accent);
+}
 .skill-grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -729,6 +749,29 @@ body { background:radial-gradient(ellipse at 85% 0%, #54bfff0c, transparent 38%)
   box-shadow:0 0 40px #54bfff0a, inset 0 1px 0 #b8e9ff20;
 }
 .system-bar { color:var(--accent); background:linear-gradient(90deg, #8ad9ff0c, transparent); }
+.system.circuit-inviting::after {
+  content:"";
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  top:-20%;
+  left:-45%;
+  width:32%;
+  height:140%;
+  background:linear-gradient(90deg, transparent, #8ad9ff12 35%, #e5f7ff30 50%, #8ad9ff12 65%, transparent);
+  opacity:0;
+  transform:translateX(-100%) skewX(-22deg);
+  animation:circuit-shine 7s ease-in-out .8s infinite;
+}
+@keyframes circuit-shine {
+  0% { transform:translateX(-100%) skewX(-22deg); opacity:0; }
+  6% { opacity:1; }
+  32% { transform:translateX(550%) skewX(-22deg); opacity:1; }
+  33%,100% { transform:translateX(550%) skewX(-22deg); opacity:0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .system.circuit-inviting::after { content:none; animation:none; }
+}
 .circuit-traces { filter:drop-shadow(0 0 3px #8ad9ff45); }
 .diagram-link rect { fill:#0b121b; }
 .diagram-link:hover rect, .diagram-link:focus-visible rect {
@@ -778,3 +821,45 @@ body { background:radial-gradient(ellipse at 85% 0%, #54bfff0c, transparent 38%)
 /* Keep single project photos and diagrams readable without cropping. */
 .project-gallery > figure:only-child { grid-column:1 / -1; }
 .project-gallery > figure:only-child img { aspect-ratio:auto; max-height:560px; object-fit:contain; }
+
+/* Introduce the circuit before visitors encounter its interactive components. */
+.circuit-guide-block { min-width:0; }
+.circuit-guide {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:0 0 20px;
+}
+.circuit-guide-icon {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:38px;
+  height:38px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--accent);
+  background:#8ad9ff08;
+}
+.circuit-guide-icon svg { width:20px; height:20px; }
+.circuit-guide h2 {
+  margin:0 0 4px;
+  font:500 22px/1.3 var(--serif);
+  letter-spacing:-.4px;
+}
+.circuit-guide p {
+  margin:0;
+  font:14px/1.6 var(--sans);
+  color:var(--muted);
+}
+.circuit-guide-mobile { display:none; }
+@media(max-width:800px) {
+  .circuit-guide-mobile { display:block; }
+}
+@media(max-width:700px) {
+  .circuit-guide { align-items:flex-start; gap:12px; margin-bottom:18px; }
+  .circuit-guide-icon { width:32px; height:32px; margin-top:2px; }
+  .circuit-guide h2 { font-size:21px; }
+  .circuit-guide p { font-size:13px; }
+}
